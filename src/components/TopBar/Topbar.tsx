@@ -13,8 +13,12 @@ import { TopbarBtn } from './components/TopbarBtn'
 export const Topbar = () => {
   const { UIOptions } = useUIOptions()
 
-  const handleEnterTokenClick = () => {
+  const handleEnterToken = () => {
     trigger('AccessTokensModal', {})
+  }
+
+  const handleShare = () => {
+    trigger('ShareAssistantModal', {})
   }
 
   return (
@@ -26,12 +30,12 @@ export const Topbar = () => {
       <div className={s.btns}>
         <TopbarBtn
           active={UIOptions[TOKEN_KEY_MODAL_IS_OPEN] || UIOptions[KEYS_MISSING]}
-          handleClick={handleEnterTokenClick}
+          handleClick={handleEnterToken}
         >
           <Key />
           {UIOptions[KEYS_MISSING] && <Alert className={s.alertIcon} />}
         </TopbarBtn>
-        <TopbarBtn handleClick={() => {}}>
+        <TopbarBtn handleClick={handleShare}>
           <Share />
         </TopbarBtn>
         <TopbarBtn handleClick={() => {}}>

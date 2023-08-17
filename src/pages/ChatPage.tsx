@@ -7,6 +7,7 @@ import { useAssistants } from 'hooks/useAssistants'
 import { checkRequiredKeysAvailability } from 'utils/checkRequiredKeysAvailability'
 import DialogModule from 'components/DialogModule/DialogModule'
 import { Main } from 'components/Main/Main'
+import { ShareAssistantModal } from 'components/Modals/ShareAssistantModal/ShareAssistantModal'
 import { Sidebar } from 'components/SideBar/Sidebar'
 import { Topbar } from 'components/TopBar/Topbar'
 
@@ -22,7 +23,10 @@ const ChatPage = () => {
   const { getCachedDist } = useAssistants()
   const bot = getCachedDist(store.get('vaName'))
   useEffect(() => {
-    setUIOption({ name: KEYS_MISSING, value: !checkRequiredKeysAvailability(bot!) })
+    setUIOption({
+      name: KEYS_MISSING,
+      value: !checkRequiredKeysAvailability(bot!),
+    })
   }, [bot])
 
   return (
@@ -47,6 +51,7 @@ const ChatPage = () => {
       <Main>
         <DialogModule bot={dist} />
       </Main>
+      <ShareAssistantModal />
     </>
   )
 }

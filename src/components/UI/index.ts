@@ -1,5 +1,6 @@
 import { Badge } from './Badge/Badge'
 import Modal from './Modal/Modal'
+import { ToastCopySucces } from './Toasts/Toasts'
 import { Wrapper } from './Wrapper/Wrapper'
 
 // import { Banner } from './Banner/Banner'
@@ -15,12 +16,12 @@ import { Wrapper } from './Wrapper/Wrapper'
 // import { Slider } from './Slider/Slider'
 // import { SmallTag } from './SmallTag/SmallTag'
 // import { Table } from './Table/Table'
-// import { ToastCopySucces } from './Toasts/Toasts'
 
 export {
   Wrapper,
   Modal,
   Badge,
+  ToastCopySucces,
   // Banner,
   // Container,
   // Details,
@@ -34,5 +35,4 @@ export {
   // Slider,
   // SmallTag,
   // Table,
-  // ToastCopySucces,
 }
