@@ -1,0 +1,61 @@
+.topbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 100vw;
+  // @include min-w;
+  height: $topbar_height;
+  background-color: $bcgrnd1;
+  border-bottom: 1px solid $bcgrnd3;
+  box-shadow: 80px 0px 20px rgba(100, 99, 99, 0.15);
+  position: relative;
+  z-index: 3;
+  &.editor {
+    box-shadow: 78px 0px 20px rgba(100, 99, 99, 0.15);
+  }
+  .assistantName {
+    white-space: nowrap;
+    @include b3;
+    @include accent_text;
+  }
+
+  .btns {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    height: 64px;
+    width: 100%;
+    padding: 16px 24px;
+
+    img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .crumbs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    padding: 0px 14px;
+    gap: 12px;
+    color: #3300ff;
+    background-color: $bcgrnd1;
+    h3 {
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 160%;
+    }
+  }
+}
+
+.tooltips {
+  @include tooltip;
+  &::after {
+    top: -2px !important;
+  }
+}

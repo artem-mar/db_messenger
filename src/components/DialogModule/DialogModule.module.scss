@@ -1,0 +1,188 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 32px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.messages {
+  border-radius: 12px;
+  flex-grow: 1;
+  padding: $spcng24 0;
+  background-color: $bcgrnd1;
+  box-shadow: 0px 1px 35px 0px #030f1a0d;
+  overflow-y: hidden;
+}
+
+.dialogSidePanel {
+  position: relative;
+  width: 368px;
+  height: calc(100% - $topbar-height);
+  display: flex;
+  flex-direction: column;
+  .left {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  .textarea {
+    @include b1;
+    min-height: 160px;
+    max-height: 160px;
+    width: 100%;
+    resize: none;
+    outline: none;
+    border: none;
+    padding: 24px;
+    color: $text3;
+    &::-webkit-input-placeholder, /* Webkit based */
+    &::placeholder {
+      color: $text3;
+      opacity: 0.4;
+    }
+  }
+}
+
+.chat {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding: 0 24px;
+  flex-direction: column;
+  gap: 24px;
+  overflow-y: scroll;
+}
+.userContainer {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: fit-content;
+  width: 100%;
+  justify-content: flex-end;
+}
+.botContainer {
+  @extend .userContainer;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.message {
+  @include b2;
+  background-color: $bcgrnd3;
+  padding: 12px;
+  border-radius: 12px 12px 0px 12px;
+  max-width: 80%;
+  width: fit-content;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+.botMessage {
+  @extend .message;
+  background: rgba(255, 204, 0, 0.1);
+  border-radius: 12px 12px 12px 0px;
+  display: flex;
+  flex-direction: column;
+  .skill {
+    @include b4;
+    color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.error {
+  display: flex;
+  font-display: column;
+  gap: 16px;
+  padding: 52px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  button {
+    @include large_btn;
+    @include lnks_n_btns3;
+    @include primary_btn;
+    @include btn_primary_behavior;
+  }
+}
+.alertName {
+  @include t2;
+}
+.runTest {
+  margin-top: 24px;
+}
+.deployPanel {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    .notification {
+      text-align: center;
+      width: 264px;
+      color: $text1;
+      @include t2;
+    }
+    .annotation {
+      text-align: center;
+      width: 264px;
+      color: $text1;
+      @include b3;
+    }
+  }
+}
+.await {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  place-self: center;
+  gap: 32px;
+  width: 300px;
+  .notification {
+    text-align: center;
+  }
+}
+.link {
+  text-decoration: underline;
+  align-self: flex-end;
+  text-underline-offset: 3px;
+}
+.alertName {
+  @include t2;
+}
+.alertDesc {
+  @include b3;
+}
+.runTest {
+  margin-top: 24px;
+}
+.error {
+  color: #ff3b30;
+  button {
+    background-color: #ff3b30;
+  }
+}
+
+.loaderWrapper {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  place-content: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 14px;
+}
