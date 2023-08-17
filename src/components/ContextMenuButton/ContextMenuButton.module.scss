@@ -29,8 +29,10 @@
 
 .icon {
   @include icon_size_24;
-  // fill: $text3;
   align-self: center;
+  path {
+    stroke: $text3;
+  }
 }
 
 .link {

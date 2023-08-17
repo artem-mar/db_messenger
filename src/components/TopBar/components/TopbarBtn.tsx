@@ -14,7 +14,7 @@ export const TopbarBtn = ({ children, handleClick, active }: Props) => {
     <button
       data-tooltip-id='viewType'
       onClick={handleClick}
-      className={cx('display', active && 'active')}
+      className={cx('btn', active && 'active')}
     >
       {children}
     </button>

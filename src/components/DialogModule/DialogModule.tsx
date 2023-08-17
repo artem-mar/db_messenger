@@ -1,8 +1,6 @@
 import classNames from 'classnames/bind'
 import { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useQueryClient } from 'react-query'
-import { useParams } from 'react-router-dom'
 import { ReactComponent as Renew } from 'assets/icons/renew.svg'
 import { ReactComponent as Send } from 'assets/icons/send.svg'
 import { BotInfoInterface, ChatForm, ChatHistory } from 'types/types'
@@ -23,22 +21,19 @@ type Props = {
 const DialogModule = ({ bot }: Props) => {
   const cx = classNames.bind(s)
   const chatRef = useRef<HTMLDivElement>(null)
-  const client = useQueryClient()
-  const { vaName } = useParams()
+
   const [apiKey, setApiKey] = useState<string | null>(null)
   const { handleSubmit, reset, control } = useForm<ChatForm>({
     mode: 'onSubmit',
   })
 
-  // const bot = client.getQueryData<BotInfoInterface | undefined>(['dist', vaName])
-
-  const { send, renew, session, history, message, setSession, remoteHistory } = useChat()
+  const { send, renew, session, history, message, setSession, remoteHistory } =
+    useChat()
 
   const checkIsChatSettings = () => {
     const isOpenAIModelInside = () => {
       return bot?.required_api_keys?.some(key => key?.name === 'openai_api_key')
     }
-    // setErrorPanel(null)
 
     if (isOpenAIModelInside()) {
       const openaiApiKey = getLSApiKeyByName(OPEN_AI_LM)
@@ -105,12 +100,20 @@ const DialogModule = ({ bot }: Props) => {
               return (
                 <div
                   key={`${block?.author == 'bot'}${i}`}
-                  className={cx(block?.author == 'bot' ? 'botContainer' : 'userContainer')}
+                  className={cx(
+                    block?.author == 'bot' ? 'botContainer' : 'userContainer'
+                  )}
                 >
-                  <span className={cx(block?.author == 'bot' ? 'botMessage' : 'message')}>
+                  <span
+                    className={cx(
+                      block?.author == 'bot' ? 'botMessage' : 'message'
+                    )}
+                  >
                     {block?.text}
                     {block?.author === 'bot' && (
-                      <span className={s.skill}>Skill: {block?.active_skill?.display_name}</span>
+                      <span className={s.skill}>
+                        Skill: {block?.active_skill?.display_name}
+                      </span>
                     )}
                   </span>
                 </div>
@@ -133,7 +136,7 @@ const DialogModule = ({ bot }: Props) => {
           theme='secondary'
           clone
           props={{
-            // disabled: renew.isLoading || send?.isLoading,
+            disabled: renew.isLoading || send?.isLoading,
             onClick: handleRenewClick,
             'data-tooltip-id': 'renew',
           }}
