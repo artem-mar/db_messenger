@@ -1,4 +1,5 @@
 import { useUIOptions } from 'context'
+import { ReactComponent as Alert } from 'assets/icons/alert.svg'
 import { ReactComponent as Key } from 'assets/icons/key.svg'
 import { ReactComponent as Props } from 'assets/icons/properties.svg'
 import { ReactComponent as Share } from 'assets/icons/share.svg'
@@ -28,6 +29,7 @@ export const Topbar = () => {
           handleClick={handleEnterTokenClick}
         >
           <Key />
+          {UIOptions[KEYS_MISSING] && <Alert className={s.alertIcon} />}
         </TopbarBtn>
         <TopbarBtn handleClick={() => {}}>
           <Share />

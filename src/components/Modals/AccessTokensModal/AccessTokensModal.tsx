@@ -19,16 +19,12 @@ export const AccessTokensModal = () => {
 
   useObserver('AccessTokensModal', handleEventUpdate)
 
-  const setState = (state: boolean) => {
-    state ? setIsOpen(state) : setIsOpen(UIOptions[KEYS_MISSING])
-  }
-
   return (
     <>
       <BaseModal
         id='accessTokensModal'
-        isOpen={isOpen || UIOptions[KEYS_MISSING]}
-        setIsOpen={setState}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
         modalClassName={s.accessTokensModal}
         closeOnBackdropClick={!UIOptions[KEYS_MISSING]}
       >

@@ -80,6 +80,10 @@
     }
   },
   "modals": {
+    "requiredKeys": {
+      "header": "{{keys}} token required",
+      "annotation": "This AI Assistant relies on <mark>{{keys}} models.</mark> Please note that it will not function properly until you provide the necessary <mark>{{keys}} key.</mark>"
+    },
     "access_api_keys": {
       "header": "Personal access tokens",
       "desc": "Personal access tokens allow your AI Assistants to use third-party services like OpenAI, GNews, News API, etc. You can always remove these tokens here if you want to stop use of the services they provide access to by your AI Assistants, or you can revoke these tokens in their respective services. Do not give out your personal access tokens to anybody you don't want to access your files.",

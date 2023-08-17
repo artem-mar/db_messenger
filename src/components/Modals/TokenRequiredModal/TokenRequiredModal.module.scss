@@ -1,0 +1,46 @@
+.container {
+  color: $text3;
+  margin: -8px 0;
+}
+
+.header {
+  display: flex;
+  gap: 12px;
+  color: $text5;
+}
+
+.attention {
+  border-radius: 50%;
+  background-color: rgba(51, 0, 255, 0.1);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    stroke: $primary1;
+    @include icon_size_24;
+  }
+}
+
+.body {
+  @include t3;
+  margin-top: 10px;
+
+  mark {
+    display: inline;
+    color: #000;
+  }
+}
+
+.link {
+  margin-top: $spcng40;
+  display: flex;
+  justify-content: center;
+  @include lnks_n_btns3;
+  button {
+    padding: 0;
+    min-height: fit-content;
+    height: fit-content;
+  }
+}

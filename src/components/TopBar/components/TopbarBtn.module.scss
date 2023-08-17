@@ -4,30 +4,51 @@
   align-items: center;
   height: 63px;
   width: 40px;
+  position: relative;
   svg {
-    // stroke: $text3;
     @include icon_size_24;
   }
+
+  // styles only for the first button (key + notification)
+  &:first-of-type {
+    &.active {
+      background: #f0f0f3;
+      & > :first-child path {
+        fill: #3300ff;
+        stroke: none;
+      }
+    }
+    &:hover {
+      background: #f0f0f3;
+      & > :first-child path {
+        fill: #3300ff;
+        stroke: none;
+      }
+    }
+    &:active {
+      & > :first-child path {
+        fill: #3300ff;
+        stroke: none;
+      }
+    }
+  }
+
   &.active {
     background: #f0f0f3;
-
-    svg path {
-      stroke: #190080;
+    & > :first-child path {
+      stroke: #3300ff;
     }
   }
   &:hover {
     background: #f0f0f3;
-    svg path {
+    & > :first-child path {
       stroke: #3300ff;
     }
   }
   &:active {
-    svg path {
-      stroke: #190080;
+    & > :first-child path {
+      stroke: #3300ff;
     }
-  }
-  &:disable {
-    opacity: 0.3;
   }
 }
 .tooltips {
