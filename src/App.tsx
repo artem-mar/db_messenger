@@ -8,7 +8,7 @@ import { BaseSidePanel } from 'components/Panels'
 Modal.setAppElement('#root')
 
 const App = () => {
-  const vaName = localStorage.getItem('vaName') || 'aaa'
+  const vaName = localStorage.getItem('vaName') || ''
   return (
     <>
       <BrowserRouter>
