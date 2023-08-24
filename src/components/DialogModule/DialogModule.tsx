@@ -15,6 +15,7 @@ import { getLSApiKeyByName } from 'utils/getLSApiKeys'
 import { Button } from 'components/Buttons'
 import { Input } from 'components/Input/Input'
 import { Loader, TextLoader } from 'components/Loaders'
+import { StartDialogModal } from 'components/Modals'
 import s from './DialogModule.module.scss'
 
 type Props = {
@@ -131,6 +132,7 @@ const DialogModule = ({ bot }: Props) => {
             </>
           )}
         </div>
+        <StartDialogModal />
       </div>
       <form className={s.form} onSubmit={handleSubmit(handleSend)}>
         <Button

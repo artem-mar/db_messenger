@@ -13,7 +13,7 @@ i18n
     react: {
       transEmptyNodeValue: '',
       transSupportBasicHtmlNodes: true,
-      transKeepBasicHtmlNodesFor: ['br', 'mark'],
+      transKeepBasicHtmlNodesFor: ['br', 'mark', 'b', 'u'],
     },
   })
 

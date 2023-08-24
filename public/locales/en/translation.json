@@ -305,6 +305,11 @@
         "continue": "Continue"
       },
       "upper": "When your assistant is added to \"Public Templates\", it goes through moderation. You can't edit it during this time. If approved, editing requires removal from public templates. If not approved, visibility reverts and you can freely edit it."
+    },
+    "start_chat": {
+      "header": "Get the conversation started",
+      "p1": "Before engaging in a conversation with the Assistant, please be aware that while it has been trained on a diverse range of data, it may occasionally generate responses that could be considered <u>biased, inappropriate, or offensive.</u>",
+      "p2": "We strive to mitigate these ethical issues, but please <b> use the AI Assistant </b> <u>responsibly</u> and <u>report any concerns</u> you encounter during the conversation. By proceeding, you acknowledge and accept that the AI Assistant's responses are generated based on patterns in the training data and may not always align with human values or ethical standards"
     }
   },
   "sidepanels": {
@@ -348,6 +353,8 @@
       }
     },
     "assistant": {
+      "like_assistant": "Like this AI Assistant?",
+      "make_own": "Make you own with Dream Builder",
       "accordions": {
         "used_models": "Models used in this Assistant"
       },
@@ -445,7 +452,7 @@
       },
       "assistant_burger": {
         "welcome_guide": "Welcome guide",
-        "renew": "Renew",
+        "renew": "Restart dialog",
         "feedback": "Feedback",
         "add_skills": "Add Skills",
         "visibility": "Visibility",

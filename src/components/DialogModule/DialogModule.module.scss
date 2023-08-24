@@ -13,6 +13,8 @@
 }
 
 .messages {
+  width: 100%;
+  position: relative;
   border-radius: 12px;
   flex-grow: 1;
   padding: $spcng24 0;
