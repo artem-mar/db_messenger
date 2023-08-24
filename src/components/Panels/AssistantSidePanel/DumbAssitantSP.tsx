@@ -24,7 +24,8 @@ const DumbAssistantSP = ({ bot }: Props) => {
     [bot.author.given_name, bot.author.family_name].join(' ').trim()
   const isAuthor = Boolean(authorImgScr || authorFullname)
 
-  const url = 'http://localhost:5173'
+  const { MODE } = import.meta.env
+  const url = import.meta.env[`VITE_BUILDER_REDIRECT_${MODE}`]
 
   const dispatchTrigger = (isOpen: boolean) => {
     setUIOption({
@@ -64,13 +65,13 @@ const DumbAssistantSP = ({ bot }: Props) => {
           </div>
         </div>
         <span className={s.like}>
-          Like this AI Assistant?
+          {t('sidepanels.assistant.like_assistant')}
           <Smile />
           <Cup />
         </span>
         <div className={s.btns}>
           <div className={s.link}>
-            <span>Make you own with Dream Builder</span>
+            <span>{t('sidepanels.assistant.make_own')}</span>
             <img src={ArrowDown} />
           </div>
 
