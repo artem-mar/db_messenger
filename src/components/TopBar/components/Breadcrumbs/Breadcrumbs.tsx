@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom'
 import { ReactComponent as HomeIcon } from 'assets/icons/home.svg'
 import { BotInfoInterface } from 'types/types'
 // import { IRouterCrumb } from 'types/types'
-import TopbarButton from 'components/TopbarButton/TopbarButton'
+import { TopbarButton } from 'components/Buttons'
 // import { BaseToolTip } from 'components/Menus'
 import s from './Breadcrumbs.module.scss'
 
@@ -15,7 +15,10 @@ export const Breadcrumbs = () => {
   const client = useQueryClient()
   const { vaName } = useParams()
 
-  const assistant = client.getQueryData<BotInfoInterface | undefined>(['dist', vaName])
+  const assistant = client.getQueryData<BotInfoInterface | undefined>([
+    'dist',
+    vaName,
+  ])
 
   let crumbs = [assistant?.display_name]
 

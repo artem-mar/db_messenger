@@ -1,8 +1,13 @@
 import classNames from 'classnames/bind'
 import React, { FC, useEffect, useId, useState } from 'react'
-import { Control, RegisterOptions, UseFormSetError, useController } from 'react-hook-form'
+import {
+  Control,
+  RegisterOptions,
+  UseFormSetError,
+  useController,
+} from 'react-hook-form'
 import { checkIfEmptyString } from 'utils/formValidate'
-import Button from 'components/Button/Button'
+import { Button } from 'components/Buttons'
 import s from './Input.module.scss'
 
 interface InputProps {
@@ -35,7 +40,11 @@ export const Input: FC<InputProps> = ({
   } = useController({
     name,
     control,
-    rules: Object.assign({}, rules, rules?.required ? { validate: checkIfEmptyString } : {}),
+    rules: Object.assign(
+      {},
+      rules,
+      rules?.required ? { validate: checkIfEmptyString } : {}
+    ),
     defaultValue,
   })
   const [isActive, setIsActive] = useState(false) // for manage focus state (for styles)

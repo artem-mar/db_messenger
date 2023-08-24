@@ -13,10 +13,6 @@
   z-index: 11;
   @include lnks_n_btns5;
 
-  // &:has(.link) {
-  //   padding: 0;
-  // }
-
   &:hover {
     background-color: $bcgrnd3;
   }
@@ -30,9 +26,6 @@
 .icon {
   @include icon_size_24;
   align-self: center;
-  path {
-    stroke: $text3;
-  }
 }
 
 .link {

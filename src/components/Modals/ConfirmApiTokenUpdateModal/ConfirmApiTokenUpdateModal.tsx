@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import { useObserver } from 'hooks/useObserver'
-import Button from 'components/Button/Button'
+import { Button } from 'components/Buttons'
 import { BaseModal } from 'components/Modals'
 import s from './ConfirmApiTokenUpdateModal.module.scss'
 
@@ -22,7 +22,9 @@ export const ConfirmApiTokenUpdate = () => {
   const [onContinue, setOnContinue] = useState<Function | null>(null)
   const [onCancel, setOnCancel] = useState<Function | null>(null)
 
-  const handleEventUpdate = ({ detail: { serviceName, onContinue, onCancel } }: Props) => {
+  const handleEventUpdate = ({
+    detail: { serviceName, onContinue, onCancel },
+  }: Props) => {
     setServiceName(serviceName ?? null)
     if (onContinue) setOnContinue(() => onContinue)
     if (onCancel) setOnCancel(() => onCancel)
@@ -50,7 +52,10 @@ export const ConfirmApiTokenUpdate = () => {
     >
       <div className={s.confirmApiTokenUpdate}>
         <h4>
-          <Trans i18nKey='modals.confirm_api_key_update.header' values={{ serviceName }} />
+          <Trans
+            i18nKey='modals.confirm_api_key_update.header'
+            values={{ serviceName }}
+          />
         </h4>
         <div className={s.btns}>
           <Button theme='secondary' props={{ onClick: handleCancelClick }}>

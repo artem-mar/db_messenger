@@ -1,15 +1,18 @@
 import classNames from 'classnames/bind'
+import { useUIOptions } from 'context'
 import { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
+import { ReactComponent as Alert } from 'assets/icons/exclamation.svg'
 import { ReactComponent as Renew } from 'assets/icons/renew.svg'
 import { ReactComponent as Send } from 'assets/icons/send.svg'
 import { BotInfoInterface, ChatForm, ChatHistory } from 'types/types'
-import { OPEN_AI_LM } from 'constants/constants'
+import { OPEN_AI_LM, RIGHT_SP_IS_ACTIVE } from 'constants/constants'
 import { useChat } from 'hooks/useChat'
 import { useChatScroll } from 'hooks/useChatScroll'
 import { getAvailableDialogSession } from 'utils/getAvailableDialogSession'
 import { getLSApiKeyByName } from 'utils/getLSApiKeys'
-import Button from 'components/Button/Button'
+import { Button } from 'components/Buttons'
 import { Input } from 'components/Input/Input'
 import { Loader, TextLoader } from 'components/Loaders'
 import s from './DialogModule.module.scss'
@@ -19,8 +22,11 @@ type Props = {
 }
 
 const DialogModule = ({ bot }: Props) => {
+  const { t } = useTranslation()
   const cx = classNames.bind(s)
   const chatRef = useRef<HTMLDivElement>(null)
+  const { UIOptions } = useUIOptions()
+  const spIsActive = UIOptions[RIGHT_SP_IS_ACTIVE]
 
   const [apiKey, setApiKey] = useState<string | null>(null)
   const { handleSubmit, reset, control } = useForm<ChatForm>({
@@ -47,14 +53,9 @@ const DialogModule = ({ bot }: Props) => {
     const availableSession = getAvailableDialogSession(bot?.name!)
 
     availableSession
-      ? remoteHistory
-          .mutateAsync(availableSession?.id)
-          .then(() => {
-            setSession(availableSession)
-          })
-          .finally(() => {
-            setSession(availableSession) //FIX
-          })
+      ? remoteHistory.mutateAsync(availableSession?.id).finally(() => {
+          setSession(availableSession) //FIX
+        })
       : bot && renew.mutateAsync(bot?.name!)
   }, [bot])
 
@@ -88,7 +89,7 @@ const DialogModule = ({ bot }: Props) => {
   }
 
   return (
-    <section className={s.container}>
+    <section className={cx(s.container, spIsActive && s.withSP)}>
       <div className={s.messages}>
         <div className={s.chat} ref={chatRef}>
           {remoteHistory?.isLoading && !remoteHistory?.error ? (
@@ -148,13 +149,17 @@ const DialogModule = ({ bot }: Props) => {
           name='message'
           control={control}
           props={{
-            placeholder: 'send',
+            placeholder: t('dialog_module.message_field.placeholder'),
           }}
         />
         <Button props={{ type: 'submit' }} clone theme='primary'>
           <Send />
         </Button>
       </form>
+      <div className={s.prevention}>
+        <Alert />
+        {t('dialog_module.chat_warning')}
+      </div>
     </section>
   )
 }

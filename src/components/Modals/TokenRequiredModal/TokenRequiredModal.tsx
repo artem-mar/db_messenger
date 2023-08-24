@@ -6,7 +6,7 @@ import { ReactComponent as Attention } from 'assets/icons/attention.svg'
 import { KEYS_MISSING, TOKEN_KEY_MODAL_IS_OPEN } from 'constants/constants'
 import { useAssistants } from 'hooks/useAssistants'
 import { trigger } from 'utils/events'
-import Button from 'components/Button/Button'
+import { Button } from 'components/Buttons'
 import BaseModal from '../BaseModal/BaseModal'
 import s from './TokenRequiredModal.module.scss'
 
@@ -41,6 +41,7 @@ const TokenRequiredModal = () => {
       isOpen={isOpen}
       closeOnBackdropClick={!UIOptions[KEYS_MISSING]}
       setIsOpen={setOpen}
+      withoutCloseBtn
     >
       <div className={s.container}>
         <h4 className={s.header}>

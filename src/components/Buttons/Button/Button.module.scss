@@ -63,10 +63,6 @@
       &_small:hover {
         box-shadow: 0px 0px 0px 3px rgba(41, 0, 204, 0.3);
       }
-
-      svg path {
-        stroke: $text4;
-      }
     }
     &_purple {
       @extend .button_theme_primary;
@@ -306,7 +302,12 @@
   &.loader {
     border-radius: 12px !important;
     z-index: 1;
-    background: linear-gradient(0deg, rgba(112, 0, 255, 0.4), rgba(112, 0, 255, 0.4)), #ffffff;
+    background: linear-gradient(
+        0deg,
+        rgba(112, 0, 255, 0.4),
+        rgba(112, 0, 255, 0.4)
+      ),
+      #ffffff;
     position: relative;
     overflow: hidden;
     &::before {

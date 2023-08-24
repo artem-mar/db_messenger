@@ -6,10 +6,10 @@ import { KEYS_MISSING } from 'constants/constants'
 import { useAssistants } from 'hooks/useAssistants'
 import { checkRequiredKeysAvailability } from 'utils/checkRequiredKeysAvailability'
 import DialogModule from 'components/DialogModule/DialogModule'
-import { Main } from 'components/Main/Main'
 import { ShareAssistantModal } from 'components/Modals/ShareAssistantModal/ShareAssistantModal'
 import { Sidebar } from 'components/SideBar/Sidebar'
 import { Topbar } from 'components/TopBar/Topbar'
+import { Main } from 'components/UI'
 
 const ChatPage = () => {
   const { vaName } = useParams()
@@ -43,10 +43,7 @@ const ChatPage = () => {
             flexDirection: 'column',
             gap: '12px',
           }}
-        >
-          {/* <DeepyHelperTab /> */}
-          {/* <SettingsTab /> */}
-        </div>
+        ></div>
       </Sidebar>
       <Main>
         <DialogModule bot={dist} />

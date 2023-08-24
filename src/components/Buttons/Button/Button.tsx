@@ -24,7 +24,7 @@ interface Props extends React.PropsWithChildren {
   loader?: boolean
 }
 
-export const Button = ({
+const Button = ({
   theme,
   tiny,
   small,

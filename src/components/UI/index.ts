@@ -1,4 +1,5 @@
 import { Badge } from './Badge/Badge'
+import { Main } from './Main/Main'
 import Modal from './Modal/Modal'
 import { ToastCopySucces } from './Toasts/Toasts'
 import { Wrapper } from './Wrapper/Wrapper'
@@ -10,7 +11,6 @@ import { Wrapper } from './Wrapper/Wrapper'
 // import { EditablePlaceholder } from './EditablePlaceholder/EditablePlaceholder'
 // import { ErrorHandler } from './ErrorHandler/ErrorHandler'
 // import Hint from './Hint/Hint'
-// import { Main } from './Main/Main'
 // import PageErrorHandler from './PageErrorHandler/PageErrorHandler'
 // import { Placeholder } from './PlaceHolder/PlaceHolder'
 // import { Slider } from './Slider/Slider'
@@ -22,6 +22,7 @@ export {
   Modal,
   Badge,
   ToastCopySucces,
+  Main,
   // Banner,
   // Container,
   // Details,
@@ -29,7 +30,6 @@ export {
   // EditablePlaceholder,
   // ErrorHandler,
   // Hint,
-  // Main,
   // PageErrorHandler,
   // Placeholder,
   // Slider,

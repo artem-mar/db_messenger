@@ -8,12 +8,14 @@ import {
 import {
   KEYS_MISSING,
   RIGHT_SP_IS_ACTIVE,
+  SHARE_MODAL_IS_OPEN,
   TOKEN_KEY_MODAL_IS_OPEN,
 } from 'constants/constants'
 
 type TOptionValue = any
 type TOptionsMap = Map<string, TOptionValue>
 type IComputedUIOptions = { [x: string]: TOptionValue }
+
 interface IUIOption {
   name: string
   value: TOptionValue
@@ -26,6 +28,7 @@ interface Props {
 const initialOptions: TOptionsMap = new Map<string, TOptionValue>([
   [RIGHT_SP_IS_ACTIVE, false],
   [TOKEN_KEY_MODAL_IS_OPEN, false],
+  [SHARE_MODAL_IS_OPEN, false],
   [KEYS_MISSING, false],
 ])
 

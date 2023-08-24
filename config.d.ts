@@ -8,7 +8,7 @@ declare module '*.module.scss' {
 }
 
 declare module '*.svg' {
-  export const value: any
+  import React = require('react')
   export const ReactComponent: React.FC<React.SVGProps<SVGSVGElement>>
   const src: string
   export default src

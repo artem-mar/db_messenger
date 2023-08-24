@@ -354,7 +354,8 @@
       "btns": {
         "more": "More",
         "use": "Use",
-        "edit": "Edit"
+        "edit": "Edit",
+        "open_db": "Open Dream Builder"
       }
     },
     "deepy": {
@@ -538,5 +539,12 @@
   "language": {
     "en": "English",
     "ru": "Russian"
+  },
+
+  "dialog_module": {
+    "message_field": {
+      "placeholder": "Type..."
+    },
+    "chat_warning": "Dream Builder has no connection to or control over the content of the AI Assistants users develop and the latter is not liable for their content."
   }
 }

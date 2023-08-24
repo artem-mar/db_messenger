@@ -1,14 +1,19 @@
+import { useUIOptions } from 'context'
 import { useTranslation } from 'react-i18next'
 import { useQueryClient } from 'react-query'
 import { useParams } from 'react-router-dom'
+import { RIGHT_SP_IS_ACTIVE, TRIGGER_RIGHT_SP_EVENT } from 'constants/constants'
+import { useAssistants } from 'hooks/useAssistants'
 import { useChat } from 'hooks/useChat'
+import { trigger } from 'utils/events'
 import BaseContextMenu from 'components/BaseContextMenu/BaseContextMenu'
 // import { BotInfoInterface, TTopbar } from 'types/types'
 // import { usePreview } from 'context/PreviewProvider'
 // import { VISIBILITY_STATUS } from 'constants/constants'
 // import { useAssistants } from 'hooks/api'
 // import { trigger } from 'utils/events'
-import ContextMenuButton from 'components/ContextMenuButton/ContextMenuButton'
+import { ContextMenuButton } from 'components/Buttons'
+import DumbAssistantSP from 'components/Panels/AssistantSidePanel/DumbAssitantSP'
 
 interface Props {
   tooltipId: string
@@ -18,21 +23,28 @@ interface Props {
 
 const MenuToolTip = ({ tooltipId }: Props) => {
   const { vaName } = useParams()
-  const queryClient = useQueryClient()
+  const { UIOptions } = useUIOptions()
   const { t } = useTranslation('translation', {
     keyPrefix: 'topbar.ctx_menus',
   })
 
   const { renew } = useChat()
 
-  const handleToggleProps = () => {}
+  const { getCachedDist } = useAssistants()
+  const bot = getCachedDist(vaName!)
+  const handleToggleProps = () => {
+    trigger(TRIGGER_RIGHT_SP_EVENT, {
+      isOpen: !UIOptions[RIGHT_SP_IS_ACTIVE],
+      children: <DumbAssistantSP bot={bot!} />,
+    })
+  }
+
   const handleRestartDialog = async () => {
     await renew.mutateAsync(vaName!)
-    queryClient.invalidateQueries(['history', []])
   }
 
   const handleShareClick = () => {
-    // trigger('ShareAssistantModal', distName)
+    trigger('ShareAssistantModal', {})
   }
 
   return (

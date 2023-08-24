@@ -1,9 +1,10 @@
 import { AxiosError } from 'axios'
 import { useState } from 'react'
-import { useMutation, useQuery, useQueryClient } from 'react-query'
+import { useMutation, useQueryClient } from 'react-query'
 import { useParams } from 'react-router-dom'
 import store from 'store2'
-import { BotInfoInterface, ChatHistory, IPostChat, SessionConfig } from 'types/types'
+import { BotInfoInterface, IPostChat, SessionConfig } from 'types/types'
+import { useChatHistory } from 'context/ChatContext'
 // import { DEBUG_EN_DIST, DEBUG_RU_DIST } from 'constants/constants'
 import { createDialogSession, getHistory, sendMessage } from 'api/chat'
 
@@ -12,13 +13,16 @@ const DEBUG_RU_DIST = 'universal_ru_prompted_assistant'
 
 export const useChat = () => {
   const [session, setSession] = useState<SessionConfig | null>(null)
-  const [history, setHistory] = useState<ChatHistory[]>([])
+  const { history, setHistory } = useChatHistory()
   const [message, setMessage] = useState<string>('')
 
   const client = useQueryClient()
   const { vaName } = useParams()
 
-  const bot = client.getQueryData<BotInfoInterface | undefined>(['dist', vaName])
+  const bot = client.getQueryData<BotInfoInterface | undefined>([
+    'dist',
+    vaName,
+  ])
 
   // const checkAvailableSession = useMutation({
   //   mutationFn: (data: number) => getDialogSession(data),
@@ -54,7 +58,8 @@ export const useChat = () => {
       ])
     },
     onError: (data: AxiosError) => {
-      const needToRenew = data.response?.status === 404 || data.response?.status === 403
+      const needToRenew =
+        data.response?.status === 404 || data.response?.status === 403
       needToRenew && renew.mutateAsync(bot?.name!)
     },
   })
@@ -65,19 +70,6 @@ export const useChat = () => {
       setHistory(data)
     },
   })
-
-  // const remoteHistory = useQuery(
-  //   ['remoteHistory', session?.id],
-  //   () => session?.id && getHistory(session.id),
-  //   {
-  //     refetchOnMount: false,
-  //     refetchOnWindowFocus: false,
-  //     retry: 0,
-  //     onSuccess: data => {
-  //       setHistory(data)
-  //     },
-  //   }
-  // )
 
   return {
     send,

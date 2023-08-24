@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind'
+import dream from 'assets/icons/dream.svg'
 // import { trigger } from 'utils/events'
 import SvgIcon from 'components/SvgIcon/SvgIcon'
 import s from './ContextMenuButton.module.scss'
@@ -30,19 +31,21 @@ const ContextMenuButton = ({
 
   const handleBtnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation()
-    // trigger('CtxMenuBtnClick', {})
     if (disabled) return
     handleClick && handleClick(e)
   }
 
-  const getIconElement = (type: TMenuItem) => (
-    <SvgIcon
-      iconName={type}
-      svgProp={{
-        className: s.icon,
-      }}
-    />
-  )
+  const getIconElement = (type: TMenuItem) =>
+    type === 'dream' ? (
+      <img src={dream} />
+    ) : (
+      <SvgIcon
+        iconName={type}
+        svgProp={{
+          className: s.icon,
+        }}
+      />
+    )
 
   return (
     <button

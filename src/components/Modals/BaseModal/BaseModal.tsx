@@ -10,6 +10,7 @@ interface IProps extends IModalProps {
   handleClose?: () => void
   children?: React.ReactNode
   closeOnBackdropClick?: boolean
+  withoutCloseBtn?: boolean
 }
 
 const BaseModal = ({
@@ -18,6 +19,7 @@ const BaseModal = ({
   handleClose,
   children,
   modalClassName,
+  withoutCloseBtn,
   closeOnBackdropClick = true,
   ...rest
 }: IProps) => {
@@ -37,9 +39,11 @@ const BaseModal = ({
       closeOnBackdropClick={closeOnBackdropClick}
       {...rest}
     >
-      <button onClick={closeModal}>
-        <CloseIcon className={s.close} />
-      </button>
+      {!withoutCloseBtn && (
+        <button onClick={closeModal}>
+          <CloseIcon className={s.close} />
+        </button>
+      )}
       {children}
     </Modal>
   )
