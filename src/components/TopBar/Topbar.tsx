@@ -43,9 +43,8 @@ export const Topbar = () => {
   return (
     <div className={s.topbar}>
       <BurgerMenu />
-      <div className={s.crumbs}>
-        <Breadcrumbs />
-      </div>
+      <span className={s.assistantName}>{bot?.display_name}</span>
+
       <div className={s.btns}>
         <TopbarBtn
           active={UIOptions[TOKEN_KEY_MODAL_IS_OPEN] || UIOptions[KEYS_MISSING]}

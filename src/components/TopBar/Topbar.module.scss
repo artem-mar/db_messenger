@@ -20,6 +20,7 @@
   .assistantName {
     white-space: nowrap;
     @include b3;
+    padding: 0px 24px;
     @include accent_text;
   }
 
