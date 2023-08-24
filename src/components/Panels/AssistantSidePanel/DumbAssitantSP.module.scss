@@ -106,8 +106,6 @@
 
     .link {
       @include lnks_n_btns3;
-      display: flex;
-      align-items: center;
       & span {
         background-image: linear-gradient(
           90deg,
@@ -118,6 +116,10 @@
         background-clip: border-box;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+      }
+
+      & img {
+        vertical-align: middle;
       }
     }
   }

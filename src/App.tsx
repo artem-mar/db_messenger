@@ -19,7 +19,6 @@ const App = () => {
         <BaseSidePanel />
       </BrowserRouter>
 
-      {/* <Outlet /> */}
       <AccessTokensModal />
       <TokenRequiredModal />
       <Toaster />
