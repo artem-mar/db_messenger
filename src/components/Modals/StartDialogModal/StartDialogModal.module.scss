@@ -13,7 +13,9 @@
 .container {
   position: relative;
   width: 80%;
-  height: 100%;
+  height: fit-content;
+  max-width: 700px;
+  max-height: 100%;
   background-color: $bcgrnd1;
   border-radius: 24px;
   padding: 16px 24px 16px 24px;
