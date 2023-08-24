@@ -21,19 +21,20 @@ const StartDialogModal = () => {
     isOpen && (
       <div className={s.modal}>
         <div className={s.container}>
+          <button onClick={handleClose}>
+            <CloseIcon className={s.close} />
+          </button>
           <div className={s.header}>
             <div className={s.circle}>
               <TickCircle />
             </div>
             {t('modals.start_chat.header')}
-            <button onClick={handleClose}>
-              <CloseIcon className={s.close} />
-            </button>
           </div>
           <div className={s.body}>
             <p>
               <Trans i18nKey='modals.start_chat.p1' />
             </p>
+            <br />
             <p>
               <Trans i18nKey='modals.start_chat.p2' />
             </p>
