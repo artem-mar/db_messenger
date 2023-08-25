@@ -1,22 +1,31 @@
 import { useUIOptions } from 'context'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import store from 'store2'
 import { ReactComponent as CloseIcon } from 'assets/icons/close.svg'
 import { ReactComponent as TickCircle } from 'assets/icons/tick-circle.svg'
-import { KEYS_MISSING } from 'constants/constants'
+import { KEYS_MISSING, START_DIALOG_MODAL_IS_OPEN } from 'constants/constants'
 import s from './StartDialogModal.module.scss'
 
 const StartDialogModal = () => {
-  const { UIOptions } = useUIOptions()
+  const { UIOptions, setUIOption } = useUIOptions()
   const { t } = useTranslation()
-  const [isOpen, setIsOpen] = useState(
-    !store.get('started') && !UIOptions[KEYS_MISSING]
-  )
+  const dialogIsStarted = Boolean(store.get('started'))
+  const [isOpen, setIsOpen] = useState(!dialogIsStarted)
+
   const handleClose = () => {
-    setIsOpen(false)
     store('started', true)
+    setUIOption({ name: START_DIALOG_MODAL_IS_OPEN, value: false })
   }
+
+  useEffect(() => {
+    setIsOpen(!UIOptions[KEYS_MISSING] && !dialogIsStarted)
+    setUIOption({
+      name: START_DIALOG_MODAL_IS_OPEN,
+      value: !UIOptions[KEYS_MISSING] && !dialogIsStarted,
+    })
+  }, [UIOptions[KEYS_MISSING], dialogIsStarted])
+
   return (
     isOpen && (
       <div className={s.modal}>

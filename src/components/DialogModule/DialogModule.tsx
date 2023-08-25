@@ -7,7 +7,11 @@ import { ReactComponent as Alert } from 'assets/icons/exclamation.svg'
 import { ReactComponent as Renew } from 'assets/icons/renew.svg'
 import { ReactComponent as Send } from 'assets/icons/send.svg'
 import { BotInfoInterface, ChatForm, ChatHistory } from 'types/types'
-import { OPEN_AI_LM, RIGHT_SP_IS_ACTIVE } from 'constants/constants'
+import {
+  OPEN_AI_LM,
+  RIGHT_SP_IS_ACTIVE,
+  START_DIALOG_MODAL_IS_OPEN,
+} from 'constants/constants'
 import { useChat } from 'hooks/useChat'
 import { useChatScroll } from 'hooks/useChatScroll'
 import { getAvailableDialogSession } from 'utils/getAvailableDialogSession'
@@ -34,6 +38,10 @@ const DialogModule = ({ bot }: Props) => {
     mode: 'onSubmit',
   })
 
+  const [formDisabled, setFormDisabled] = useState<boolean>(
+    UIOptions[START_DIALOG_MODAL_IS_OPEN]
+  )
+
   const { send, renew, session, history, message, setSession, remoteHistory } =
     useChat()
 
@@ -59,6 +67,10 @@ const DialogModule = ({ bot }: Props) => {
         })
       : bot && renew.mutateAsync(bot?.name!)
   }, [bot])
+
+  useEffect(() => {
+    setFormDisabled(UIOptions[START_DIALOG_MODAL_IS_OPEN])
+  }, [UIOptions[START_DIALOG_MODAL_IS_OPEN]])
 
   useChatScroll(chatRef, [history, message, remoteHistory])
 
@@ -112,11 +124,6 @@ const DialogModule = ({ bot }: Props) => {
                     )}
                   >
                     {block?.text}
-                    {block?.author === 'bot' && (
-                      <span className={s.skill}>
-                        Skill: {block?.active_skill?.display_name}
-                      </span>
-                    )}
                   </span>
                 </div>
               )
@@ -152,9 +159,17 @@ const DialogModule = ({ bot }: Props) => {
           control={control}
           props={{
             placeholder: t('dialog_module.message_field.placeholder'),
+            disabled: formDisabled,
           }}
         />
-        <Button props={{ type: 'submit' }} clone theme='primary'>
+        <Button
+          props={{
+            type: 'submit',
+            disabled: formDisabled,
+          }}
+          clone
+          theme='primary'
+        >
           <Send />
         </Button>
       </form>
