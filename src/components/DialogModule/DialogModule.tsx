@@ -152,7 +152,7 @@ const DialogModule = ({ bot, error }: Props) => {
           )}
         </div>
         {error && <ErrorToast text={errorText} />}
-        <StartDialogModal />
+        {bot && <StartDialogModal />}
       </div>
       <form className={s.form} onSubmit={handleSubmit(handleSend)}>
         <Button
