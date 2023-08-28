@@ -79,8 +79,8 @@ const DialogModule = ({ bot, error }: Props) => {
   }, [bot])
 
   useEffect(() => {
-    setFormDisabled(UIOptions[START_DIALOG_MODAL_IS_OPEN] || !bot)
-  }, [UIOptions[START_DIALOG_MODAL_IS_OPEN], renew, send])
+    setFormDisabled(UIOptions[START_DIALOG_MODAL_IS_OPEN] || !bot || error)
+  }, [UIOptions[START_DIALOG_MODAL_IS_OPEN], renew, send, bot, error])
 
   useChatScroll(chatRef, [history, message, remoteHistory])
 
@@ -120,6 +120,7 @@ const DialogModule = ({ bot, error }: Props) => {
               <Loader />
             </div>
           ) : (
+            !error &&
             history.map((block: ChatHistory, i: number) => {
               return (
                 <div
