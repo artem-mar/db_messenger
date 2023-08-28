@@ -21,11 +21,18 @@ import { Button } from 'components/Buttons'
 import { Input } from 'components/Input/Input'
 import { Loader, TextLoader } from 'components/Loaders'
 import { StartDialogModal } from 'components/Modals'
+import { ErrorToast } from 'components/UI/ErrorToast/ErrorToast'
 import s from './DialogModule.module.scss'
 
 type Props = {
   bot: BotInfoInterface | undefined
   error: AxiosError | null
+}
+
+const errTextMapping: { [key: string]: string } = {
+  '403': 'dialog_module.error_toast.no_access',
+  '404': 'dialog_module.error_toast.not_found',
+  default: 'dialog_module.error_toast.default',
 }
 
 const DialogModule = ({ bot, error }: Props) => {
@@ -34,6 +41,9 @@ const DialogModule = ({ bot, error }: Props) => {
   const chatRef = useRef<HTMLDivElement>(null)
   const { UIOptions } = useUIOptions()
   const spIsActive = UIOptions[RIGHT_SP_IS_ACTIVE]
+
+  const errStatus = error?.response?.status || 'default'
+  const errorText = errTextMapping[errStatus]
 
   const [apiKey, setApiKey] = useState<string | null>(null)
   const { handleSubmit, reset, control } = useForm<ChatForm>({
@@ -146,6 +156,7 @@ const DialogModule = ({ bot, error }: Props) => {
             </>
           )}
         </div>
+        {error && <ErrorToast text={errorText} />}
         <StartDialogModal />
       </div>
       <form className={s.form} onSubmit={handleSubmit(handleSend)}>

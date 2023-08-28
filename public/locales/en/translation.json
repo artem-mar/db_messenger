@@ -552,6 +552,11 @@
     "message_field": {
       "placeholder": "Type..."
     },
-    "chat_warning": "Dream Builder has no connection to or control over the content of the AI Assistants users develop and the latter is not liable for their content."
+    "chat_warning": "Dream Builder has no connection to or control over the content of the AI Assistants users develop and the latter is not liable for their content.",
+    "error_toast": {
+      "no_access": "No access",
+      "not_found": "Virtual assistant not found in the database",
+      "default": "Something went wrong..."
+    }
   }
 }
