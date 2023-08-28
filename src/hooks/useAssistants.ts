@@ -15,8 +15,6 @@ interface IGetDistOptions {
 
 export const useAssistants = () => {
   const queryClient = useQueryClient()
-  const PUBLIC_DISTS = 'publicDists'
-  const PRIVATE_DISTS = 'privateDists'
   const DIST = 'dist'
 
   const getDist = ({ distName }: IGetDist, options?: IGetDistOptions) => {
@@ -35,18 +33,12 @@ export const useAssistants = () => {
   }
 
   const getCachedDist = (name: string) => {
-    const cachedDist = queryClient.getQueryData<BotInfoInterface | undefined>([DIST, name])
-    const isCachedDist = cachedDist !== undefined && cachedDist !== null
+    const cachedDist = queryClient.getQueryData<BotInfoInterface | undefined>([
+      DIST,
+      name,
+    ])
 
-    if (isCachedDist) return cachedDist
-
-    const publicDists =
-      queryClient.getQueryData<BotInfoInterface[] | undefined>([PUBLIC_DISTS]) || []
-    const privateDists =
-      queryClient.getQueryData<BotInfoInterface[] | undefined>([PRIVATE_DISTS]) || []
-    const result = [...publicDists, ...privateDists]?.find(dist => dist?.name === name)
-
-    return result
+    return cachedDist
   }
 
   return {

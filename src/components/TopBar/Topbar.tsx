@@ -15,7 +15,6 @@ import { useAssistants } from 'hooks/useAssistants'
 import { trigger } from 'utils/events'
 import { BurgerMenu } from 'components/BurgerMenu/BurgerMenu'
 import DumbAssistantSP from 'components/Panels/AssistantSidePanel/DumbAssitantSP'
-import { Breadcrumbs } from 'components/TopBar/components/Breadcrumbs/Breadcrumbs'
 import s from './Topbar.module.scss'
 import { TopbarBtn } from './components/TopbarBtn'
 

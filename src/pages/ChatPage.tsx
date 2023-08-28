@@ -1,7 +1,7 @@
+import { AxiosError } from 'axios'
 import { useUIOptions } from 'context'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import store from 'store2'
 import { KEYS_MISSING } from 'constants/constants'
 import { useAssistants } from 'hooks/useAssistants'
 import { checkRequiredKeysAvailability } from 'utils/checkRequiredKeysAvailability'
@@ -16,12 +16,10 @@ const ChatPage = () => {
   vaName && localStorage.setItem('vaName', vaName)
 
   const { getDist } = useAssistants()
-  const { data: dist } = getDist({ distName: vaName })
+  const { data: bot, error } = getDist({ distName: vaName })
 
   const { setUIOption } = useUIOptions()
 
-  const { getCachedDist } = useAssistants()
-  const bot = getCachedDist(store.get('vaName'))
   useEffect(() => {
     setUIOption({
       name: KEYS_MISSING,
@@ -46,7 +44,7 @@ const ChatPage = () => {
         ></div>
       </Sidebar>
       <Main>
-        <DialogModule bot={dist} />
+        <DialogModule bot={bot} error={error as AxiosError | null} />
       </Main>
       <ShareAssistantModal />
     </>

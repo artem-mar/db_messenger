@@ -1,3 +1,4 @@
+import { AxiosError } from 'axios'
 import classNames from 'classnames/bind'
 import { useUIOptions } from 'context'
 import { useEffect, useRef, useState } from 'react'
@@ -24,9 +25,10 @@ import s from './DialogModule.module.scss'
 
 type Props = {
   bot: BotInfoInterface | undefined
+  error: AxiosError | null
 }
 
-const DialogModule = ({ bot }: Props) => {
+const DialogModule = ({ bot, error }: Props) => {
   const { t } = useTranslation()
   const cx = classNames.bind(s)
   const chatRef = useRef<HTMLDivElement>(null)
@@ -69,8 +71,13 @@ const DialogModule = ({ bot }: Props) => {
   }, [bot])
 
   useEffect(() => {
-    setFormDisabled(UIOptions[START_DIALOG_MODAL_IS_OPEN])
-  }, [UIOptions[START_DIALOG_MODAL_IS_OPEN]])
+    setFormDisabled(
+      UIOptions[START_DIALOG_MODAL_IS_OPEN] ||
+        renew.isLoading ||
+        send.isLoading ||
+        error
+    )
+  }, [UIOptions[START_DIALOG_MODAL_IS_OPEN], renew, send])
 
   useChatScroll(chatRef, [history, message, remoteHistory])
 
@@ -146,7 +153,7 @@ const DialogModule = ({ bot }: Props) => {
           theme='secondary'
           clone
           props={{
-            disabled: renew.isLoading || send?.isLoading,
+            disabled: formDisabled,
             onClick: handleRenewClick,
             'data-tooltip-id': 'renew',
           }}
