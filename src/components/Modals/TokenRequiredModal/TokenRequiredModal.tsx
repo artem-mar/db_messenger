@@ -2,11 +2,11 @@ import { useUIOptions } from 'context'
 import { useEffect, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import store from 'store2'
-import { ReactComponent as Attention } from 'assets/icons/attention.svg'
 import { KEYS_MISSING, TOKEN_KEY_MODAL_IS_OPEN } from 'constants/constants'
 import { useAssistants } from 'hooks/useAssistants'
 import { trigger } from 'utils/events'
 import { Button } from 'components/Buttons'
+import SvgIcon from 'components/SvgIcon/SvgIcon'
 import BaseModal from '../BaseModal/BaseModal'
 import s from './TokenRequiredModal.module.scss'
 
@@ -46,7 +46,7 @@ const TokenRequiredModal = () => {
       <div className={s.container}>
         <h4 className={s.header}>
           <div className={s.attention}>
-            <Attention />
+            <SvgIcon iconName='attention' />
           </div>
           {t('modals.requiredKeys.header', { keys: keysString })}
         </h4>

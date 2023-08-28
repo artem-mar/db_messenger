@@ -2,9 +2,8 @@ import { useUIOptions } from 'context'
 import { useEffect, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import store from 'store2'
-import { ReactComponent as CloseIcon } from 'assets/icons/close.svg'
-import { ReactComponent as TickCircle } from 'assets/icons/tick-circle.svg'
 import { KEYS_MISSING, START_DIALOG_MODAL_IS_OPEN } from 'constants/constants'
+import SvgIcon from 'components/SvgIcon/SvgIcon'
 import s from './StartDialogModal.module.scss'
 
 const StartDialogModal = () => {
@@ -31,11 +30,11 @@ const StartDialogModal = () => {
       <div className={s.modal}>
         <div className={s.container}>
           <button onClick={handleClose}>
-            <CloseIcon className={s.close} />
+            <SvgIcon iconName='close' svgProp={{ className: s.close }} />
           </button>
           <div className={s.header}>
             <div className={s.circle}>
-              <TickCircle />
+              <SvgIcon iconName='tick-circle' />
             </div>
             {t('modals.start_chat.header')}
           </div>

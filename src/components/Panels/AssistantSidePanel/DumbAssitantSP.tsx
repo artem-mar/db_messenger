@@ -2,12 +2,11 @@ import { useUIOptions } from 'context'
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import ArrowDown from 'assets/icons/arrow_dwn.svg'
-import { ReactComponent as Cup } from 'assets/icons/emoji_cup.svg'
-import { ReactComponent as Smile } from 'assets/icons/emoji_wink.svg'
 import { BotInfoInterface } from 'types/types'
 import { ACTIVE_ASSISTANT_SP_ID } from 'constants/constants'
 import { Button } from 'components/Buttons'
 import { SidePanelHeader } from 'components/Panels'
+import SvgIcon from 'components/SvgIcon/SvgIcon'
 import s from './DumbAssitantSP.module.scss'
 
 interface Props {
@@ -66,8 +65,8 @@ const DumbAssistantSP = ({ bot }: Props) => {
         </div>
         <span className={s.like}>
           {t('sidepanels.assistant.like_assistant')}
-          <Smile />
-          <Cup />
+          <SvgIcon iconName='emoji_wink' />
+          <SvgIcon iconName='emoji_cup' />
         </span>
         <div className={s.btns}>
           <div className={s.link}>

@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { ReactComponent as AlertIcon } from 'assets/icons/attention.svg'
+import SvgIcon from 'components/SvgIcon/SvgIcon'
 import s from './ErrorToast.module.scss'
 
 export const ErrorToast = ({ text }: { text: string }) => {
@@ -8,7 +8,7 @@ export const ErrorToast = ({ text }: { text: string }) => {
   return (
     <div className={s.toast}>
       <div className={s.attention}>
-        <AlertIcon />
+        <SvgIcon iconName='attention' />
       </div>
       {t(text)}
     </div>

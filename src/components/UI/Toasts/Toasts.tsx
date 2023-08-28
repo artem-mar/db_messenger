@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { ReactComponent as SuccesSVG } from 'assets/icons/success.svg'
+import SvgIcon from 'components/SvgIcon/SvgIcon'
 import s from './Toasts.module.scss'
 
 const BaseToast = ({ children }: any) => {
@@ -12,7 +12,7 @@ export const ToastCopySucces = () => {
   return (
     <BaseToast>
       <div className={s.succes}>
-        <SuccesSVG />
+        <SvgIcon iconName='success' />
         {t('toasts.copied')}
       </div>
     </BaseToast>

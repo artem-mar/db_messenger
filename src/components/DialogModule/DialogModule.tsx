@@ -4,9 +4,6 @@ import { useUIOptions } from 'context'
 import { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-import { ReactComponent as Alert } from 'assets/icons/exclamation.svg'
-import { ReactComponent as Renew } from 'assets/icons/renew.svg'
-import { ReactComponent as Send } from 'assets/icons/send.svg'
 import { BotInfoInterface, ChatForm, ChatHistory } from 'types/types'
 import {
   OPEN_AI_LM,
@@ -21,6 +18,7 @@ import { Button } from 'components/Buttons'
 import { Input } from 'components/Input/Input'
 import { Loader, TextLoader } from 'components/Loaders'
 import { StartDialogModal } from 'components/Modals'
+import SvgIcon from 'components/SvgIcon/SvgIcon'
 import { ErrorToast } from 'components/UI/ErrorToast/ErrorToast'
 import s from './DialogModule.module.scss'
 
@@ -164,7 +162,7 @@ const DialogModule = ({ bot, error }: Props) => {
             'data-tooltip-id': 'renew',
           }}
         >
-          <Renew />
+          <SvgIcon iconName='renew' />
         </Button>
         <Input
           big
@@ -183,11 +181,11 @@ const DialogModule = ({ bot, error }: Props) => {
           clone
           theme='primary'
         >
-          <Send />
+          <SvgIcon iconName='send' />
         </Button>
       </form>
       <div className={s.prevention}>
-        <Alert />
+        <SvgIcon iconName='exclamation' />
         {t('dialog_module.chat_warning')}
       </div>
     </section>

@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind'
 import React from 'react'
-import { ReactComponent as CloseIcon } from 'assets/icons/close.svg'
+import SvgIcon from 'components/SvgIcon/SvgIcon'
 import Modal, { IModalProps } from 'components/UI/Modal/Modal'
 import s from './BaseModal.module.scss'
 
@@ -41,7 +41,7 @@ const BaseModal = ({
     >
       {!withoutCloseBtn && (
         <button onClick={closeModal}>
-          <CloseIcon className={s.close} />
+          <SvgIcon iconName='close' svgProp={{ className: s.close }} />
         </button>
       )}
       {children}

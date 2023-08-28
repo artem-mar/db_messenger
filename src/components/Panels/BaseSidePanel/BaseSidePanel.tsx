@@ -1,9 +1,9 @@
-import { ReactComponent as CloseIcon } from '@assets/icons/close.svg'
 import { useUIOptions } from 'context'
 import React, { FC, useEffect, useState } from 'react'
 import { RIGHT_SP_IS_ACTIVE, TRIGGER_RIGHT_SP_EVENT } from 'constants/constants'
 import { useObserver } from 'hooks/useObserver'
 import SidePanel from 'components/Panels/SidePanel/SidePanel'
+import SvgIcon from 'components/SvgIcon/SvgIcon'
 import s from './BaseSidePanel.module.scss'
 
 type TTransition = 'left' | 'right'
@@ -82,7 +82,7 @@ export const BaseSidePanel: FC<BaseSidePanel> = ({
             className={s.close}
             onClick={handleClose}
           >
-            <CloseIcon />
+            <SvgIcon iconName='close' />
           </button>
         )}
         {content}
