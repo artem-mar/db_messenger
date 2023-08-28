@@ -51,12 +51,14 @@ const MenuToolTip = ({ tooltipId }: Props) => {
         name={t('assistant_burger.properties')}
         type='properties'
         handleClick={handleToggleProps}
+        disabled={!bot}
       />
       <hr />
       <ContextMenuButton
         name={t('assistant_burger.renew')}
         type='renew'
         handleClick={handleRestartDialog}
+        disabled={!bot}
       />
 
       <ContextMenuButton

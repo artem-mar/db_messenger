@@ -11,16 +11,17 @@
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
+
   position: relative;
   width: 80%;
-  height: fit-content;
   max-width: 700px;
-  max-height: 100%;
+  max-height: 90%;
   background-color: $bcgrnd1;
   border-radius: 24px;
   padding: 16px 24px 16px 24px;
   color: $text1;
-  max-height: 90%;
 
   box-shadow: 0px 0px 20px 0px #64636326;
 }
@@ -43,6 +44,7 @@
   gap: 12px;
   justify-content: flex-start;
   align-items: center;
+  margin-right: $spcng16;
   @include t2;
 
   .circle {
@@ -59,7 +61,6 @@
 }
 
 .body {
-  height: calc(100% - 70px);
   overflow-y: scroll;
   margin-right: -$scrollbar-total-width;
   margin-top: 8px;

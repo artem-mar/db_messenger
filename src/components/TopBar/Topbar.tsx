@@ -61,6 +61,7 @@ export const Topbar = () => {
         <TopbarBtn
           active={UIOptions[RIGHT_SP_IS_ACTIVE]}
           handleClick={handlePropsOpen}
+          disabled={!bot}
         >
           <Props />
         </TopbarBtn>

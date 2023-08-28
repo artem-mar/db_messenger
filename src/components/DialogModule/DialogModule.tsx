@@ -81,12 +81,7 @@ const DialogModule = ({ bot, error }: Props) => {
   }, [bot])
 
   useEffect(() => {
-    setFormDisabled(
-      UIOptions[START_DIALOG_MODAL_IS_OPEN] ||
-        renew.isLoading ||
-        send.isLoading ||
-        error
-    )
+    setFormDisabled(UIOptions[START_DIALOG_MODAL_IS_OPEN] || !bot)
   }, [UIOptions[START_DIALOG_MODAL_IS_OPEN], renew, send])
 
   useChatScroll(chatRef, [history, message, remoteHistory])
@@ -164,7 +159,7 @@ const DialogModule = ({ bot, error }: Props) => {
           theme='secondary'
           clone
           props={{
-            disabled: formDisabled,
+            disabled: formDisabled || renew.isLoading,
             onClick: handleRenewClick,
             'data-tooltip-id': 'renew',
           }}
@@ -183,7 +178,7 @@ const DialogModule = ({ bot, error }: Props) => {
         <Button
           props={{
             type: 'submit',
-            disabled: formDisabled,
+            disabled: formDisabled || send.isLoading,
           }}
           clone
           theme='primary'
