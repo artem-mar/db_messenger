@@ -13,14 +13,4 @@
     left: 80px;
     width: calc(100vw - $sidebar-width);
   }
-  &.editor {
-    flex-direction: row;
-  }
-  &.fullWidth {
-    flex-direction: row;
-  }
-}
-.column {
-  display: flex;
-  flex-direction: column;
 }

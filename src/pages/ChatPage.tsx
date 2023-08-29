@@ -9,7 +9,7 @@ import DialogModule from 'components/DialogModule/DialogModule'
 import { ShareAssistantModal } from 'components/Modals/ShareAssistantModal/ShareAssistantModal'
 import { Sidebar } from 'components/SideBar/Sidebar'
 import { Topbar } from 'components/TopBar/Topbar'
-import { Main } from 'components/UI'
+import { Main, PageErrorHandler } from 'components/UI'
 
 const ChatPage = () => {
   const { vaName } = useParams()
@@ -17,7 +17,6 @@ const ChatPage = () => {
 
   const { getDist } = useAssistants()
   const { data: bot, error } = getDist({ distName: vaName })
-
   const { setUIOption } = useUIOptions()
 
   useEffect(() => {
@@ -27,7 +26,7 @@ const ChatPage = () => {
     })
   }, [bot])
 
-  return (
+  return !error ? (
     <>
       <Topbar />
       <Sidebar>
@@ -44,10 +43,12 @@ const ChatPage = () => {
         ></div>
       </Sidebar>
       <Main>
-        <DialogModule bot={bot} error={error as AxiosError | null} />
+        <DialogModule bot={bot} />
       </Main>
       <ShareAssistantModal />
     </>
+  ) : (
+    <PageErrorHandler error={error as AxiosError} />
   )
 }
 

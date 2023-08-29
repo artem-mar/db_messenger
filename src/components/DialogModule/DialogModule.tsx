@@ -1,4 +1,3 @@
-import { AxiosError } from 'axios'
 import classNames from 'classnames/bind'
 import { useUIOptions } from 'context'
 import { useEffect, useRef, useState } from 'react'
@@ -19,29 +18,18 @@ import { Input } from 'components/Input/Input'
 import { Loader, TextLoader } from 'components/Loaders'
 import { StartDialogModal } from 'components/Modals'
 import SvgIcon from 'components/SvgIcon/SvgIcon'
-import { ErrorToast } from 'components/UI/ErrorToast/ErrorToast'
 import s from './DialogModule.module.scss'
 
 type Props = {
   bot: BotInfoInterface | undefined
-  error: AxiosError | null
 }
 
-const errTextMapping: { [key: string]: string } = {
-  '403': 'dialog_module.error_toast.no_access',
-  '404': 'dialog_module.error_toast.not_found',
-  default: 'dialog_module.error_toast.default',
-}
-
-const DialogModule = ({ bot, error }: Props) => {
+const DialogModule = ({ bot }: Props) => {
   const { t } = useTranslation()
   const cx = classNames.bind(s)
   const chatRef = useRef<HTMLDivElement>(null)
   const { UIOptions } = useUIOptions()
   const spIsActive = UIOptions[RIGHT_SP_IS_ACTIVE]
-
-  const errStatus = error?.response?.status || 'default'
-  const errorText = errTextMapping[errStatus]
 
   const [apiKey, setApiKey] = useState<string | null>(null)
   const { handleSubmit, reset, control } = useForm<ChatForm>({
@@ -79,8 +67,8 @@ const DialogModule = ({ bot, error }: Props) => {
   }, [bot])
 
   useEffect(() => {
-    setFormDisabled(UIOptions[START_DIALOG_MODAL_IS_OPEN] || !bot || error)
-  }, [UIOptions[START_DIALOG_MODAL_IS_OPEN], renew, send, bot, error])
+    setFormDisabled(UIOptions[START_DIALOG_MODAL_IS_OPEN] || !bot)
+  }, [UIOptions[START_DIALOG_MODAL_IS_OPEN], renew, send, bot])
 
   useChatScroll(chatRef, [history, message, remoteHistory])
 
@@ -120,7 +108,6 @@ const DialogModule = ({ bot, error }: Props) => {
               <Loader />
             </div>
           ) : (
-            !error &&
             history.map((block: ChatHistory, i: number) => {
               return (
                 <div
@@ -150,8 +137,7 @@ const DialogModule = ({ bot, error }: Props) => {
             </>
           )}
         </div>
-        {error && <ErrorToast text={errorText} />}
-        {bot && <StartDialogModal />}
+        <StartDialogModal />
       </div>
       <form className={s.form} onSubmit={handleSubmit(handleSend)}>
         <Button
