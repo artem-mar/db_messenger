@@ -1,4 +1,3 @@
-import { AxiosError } from 'axios'
 import { useUIOptions } from 'context'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
@@ -48,7 +47,7 @@ const ChatPage = () => {
       <ShareAssistantModal />
     </>
   ) : (
-    <PageErrorHandler error={error as AxiosError} />
+    <PageErrorHandler status={404} />
   )
 }
 

@@ -1,14 +1,13 @@
-import { AxiosError } from 'axios'
 import { getErrorMessage } from 'utils/getErrorMessage'
 import SvgIcon from 'components/SvgIcon/SvgIcon'
 import s from './PageErrorHandler.module.scss'
 
 interface IProps {
-  error: AxiosError
+  status: number
 }
 
-const PageErrorHandler = ({ error }: IProps) => {
-  const status = error?.response?.status || 404
+const PageErrorHandler = ({ status }: IProps) => {
+  // const status = error?.response?.status || 404
   const { title, message } = getErrorMessage(status)
   return (
     // Fix on SVG
