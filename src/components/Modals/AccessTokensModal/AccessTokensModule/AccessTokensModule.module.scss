@@ -5,13 +5,15 @@
   min-height: 100%;
   justify-content: space-between;
   background-color: $bcgrnd3;
+  padding-right: calc(64px - $scrollbar-total-width);
+  margin-right: calc(-64px);
+  overflow-y: scroll;
 
   .body {
     display: flex;
     flex-direction: column;
     gap: 16px;
 
-    height: 100%;
     .title {
       @include t1;
     }
@@ -97,6 +99,7 @@
       .attention {
         border-radius: 50%;
         background-color: rgba(51, 0, 255, 0.1);
+        width: 40px;
         min-width: 40px;
         height: 40px;
         display: flex;
@@ -112,5 +115,55 @@
         }
       }
     }
+  }
+}
+
+@media (max-width: $medium) {
+  .module {
+    .body {
+      .add {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 8px;
+        & > * {
+          max-width: 100%;
+          min-width: auto;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $small) {
+  .module {
+    padding-right: calc(32px - $scrollbar-total-width);
+    margin-right: calc(-32px);
+
+    .title {
+      font-size: 20px;
+    }
+    .body {
+      .annotations {
+        @include b2;
+      }
+      .tokenName {
+        @include b2;
+      }
+    }
+
+    .footer {
+      .container {
+        display: block;
+        .attention {
+          margin-right: 12px;
+          float: left;
+        }
+      }
+    }
+  }
+  .annotation {
+    @include b2;
   }
 }

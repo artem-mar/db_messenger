@@ -1,6 +1,6 @@
 .confirmApiTokenUpdate {
   width: 100%;
-  h4 {
+  .h4 {
     mark {
       display: inline-flex;
     }
@@ -21,4 +21,21 @@
   align-items: center;
   justify-content: flex-end;
   gap: 24px;
+}
+
+@media (max-width: $small) {
+  .confirmApiTokenUpdate {
+    .h4 {
+      font-size: 20px;
+    }
+
+    .btns {
+      flex-direction: column;
+      gap: 8px;
+
+      & > * {
+        width: 100%;
+      }
+    }
+  }
 }

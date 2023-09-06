@@ -458,7 +458,8 @@
         "visibility": "Видимость",
         "share": "Поделиться",
         "delete": "Удалить",
-        "properties": "Свойства"
+        "properties": "Свойства",
+        "tokens": "Токены"
       },
       "profile": {
         "settings": "Настройки",

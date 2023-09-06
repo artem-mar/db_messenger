@@ -64,3 +64,20 @@
     top: -2px !important;
   }
 }
+
+@media (max-width: $small) {
+  .topbar {
+    background-color: $bcgrnd2;
+    padding: 0 20px;
+    gap: 4px;
+    height: 56px;
+    box-shadow: none;
+
+    .assistantName {
+      white-space: nowrap;
+      @include b3;
+      padding: 0;
+      color: #000000e6;
+    }
+  }
+}

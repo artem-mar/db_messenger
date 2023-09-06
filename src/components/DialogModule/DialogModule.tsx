@@ -11,6 +11,7 @@ import {
 } from 'constants/constants'
 import { useChat } from 'hooks/useChat'
 import { useChatScroll } from 'hooks/useChatScroll'
+import { useResize } from 'hooks/useResize'
 import { getAvailableDialogSession } from 'utils/getAvailableDialogSession'
 import { getLSApiKeyByName } from 'utils/getLSApiKeys'
 import { Button } from 'components/Buttons'
@@ -30,6 +31,7 @@ const DialogModule = ({ bot }: Props) => {
   const chatRef = useRef<HTMLDivElement>(null)
   const { UIOptions } = useUIOptions()
   const spIsActive = UIOptions[RIGHT_SP_IS_ACTIVE]
+  const { isScreenXs } = useResize()
 
   const [apiKey, setApiKey] = useState<string | null>(null)
   const { handleSubmit, reset, control } = useForm<ChatForm>({
@@ -171,10 +173,12 @@ const DialogModule = ({ bot }: Props) => {
           <SvgIcon iconName='send' />
         </Button>
       </form>
-      <div className={s.prevention}>
-        <SvgIcon iconName='exclamation' />
-        {t('dialog_module.chat_warning')}
-      </div>
+      {!isScreenXs && (
+        <div className={s.prevention}>
+          <SvgIcon iconName='exclamation' />
+          {t('dialog_module.chat_warning')}
+        </div>
+      )}
     </section>
   )
 }

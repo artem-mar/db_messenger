@@ -188,7 +188,7 @@ export const AccessTokensModule = () => {
           <ul className={s.tokens}>
             {tokens.map(({ api_service }: IUserApiKey) => (
               <li className={s.token} key={api_service.id}>
-                <SvgIcon iconName='key' />
+                <SvgIcon svgProp={{ className: s.icon }} iconName='key' />
                 <div className={s.tokenName}>{api_service.display_name}</div>
                 <div className={s.right}>
                   <button

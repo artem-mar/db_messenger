@@ -51,7 +51,7 @@ export const ConfirmApiTokenUpdate = () => {
       data-modal-type='quit'
     >
       <div className={s.confirmApiTokenUpdate}>
-        <h4>
+        <h4 className={s.h4}>
           <Trans
             i18nKey='modals.confirm_api_key_update.header'
             values={{ serviceName }}

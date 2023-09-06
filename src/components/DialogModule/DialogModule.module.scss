@@ -17,7 +17,7 @@
   position: relative;
   border-radius: 12px;
   flex-grow: 1;
-  padding: $spcng24 0;
+
   background-color: $bcgrnd1;
   box-shadow: 0px 1px 35px 0px #030f1a0d;
   overflow-y: hidden;
@@ -57,7 +57,7 @@
   width: 100%;
   height: 100%;
   display: flex;
-  padding: 0 calc(24px - $scrollbar-total-width) 0 24px;
+  padding: $spcng24 calc($spcng24 - $scrollbar-total-width) $spcng24 $spcng24;
   flex-direction: column;
   gap: 24px;
   overflow-y: scroll;
@@ -200,5 +200,24 @@
   svg {
     margin-right: 4px;
     vertical-align: text-bottom;
+  }
+}
+
+@media (max-width: $small) {
+  .container {
+    background-color: $bcgrnd1;
+    gap: 0;
+  }
+
+  .messages {
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .form {
+    margin-top: 0;
+    padding: 12px 20px;
+    border-top: solid 1px $bcgrnd3;
+    gap: 12px;
   }
 }

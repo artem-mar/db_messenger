@@ -2,10 +2,10 @@ import { useUIOptions } from 'context'
 import { useEffect, useState } from 'react'
 import { KEYS_MISSING, TOKEN_KEY_MODAL_IS_OPEN } from 'constants/constants'
 import { useObserver } from 'hooks/useObserver'
-import { AccessTokensModule } from 'components/AccessTokensModule/AccessTokensModule'
 import { BaseModal } from 'components/Modals'
 import { ConfirmApiTokenUpdate } from '../ConfirmApiTokenUpdateModal/ConfirmApiTokenUpdateModal'
 import s from './AccessTokensModal.module.scss'
+import { AccessTokensModule } from './AccessTokensModule/AccessTokensModule'
 
 export const AccessTokensModal = () => {
   const [isOpen, setIsOpen] = useState(false)

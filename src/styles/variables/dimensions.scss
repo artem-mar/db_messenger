@@ -11,3 +11,8 @@ $scrollbar-padding: 6px;
 $scrollbar-thumb-width: 8px;
 $scrollbar-total-width: calc($scrollbar-thumb-width + ($scrollbar-padding * 2));
 $scrollbar-border-radius: calc($scrollbar-total-width / 2);
+
+$small: 576px;
+$medium: 768px;
+$large: 992px;
+$x-large: 1200px;

@@ -458,7 +458,8 @@
         "visibility": "Visibility",
         "share": "Share",
         "delete": "Delete",
-        "properties": "Properties"
+        "properties": "Properties",
+        "tokens": "Tokens"
       },
       "profile": { "settings": "Profile Settings", "log_out": "Log Out" }
     },

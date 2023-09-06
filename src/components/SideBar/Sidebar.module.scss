@@ -51,3 +51,9 @@
     left: -2px !important;
   }
 }
+
+@media (max-width: #{$medium}) {
+  .sidebar {
+    display: none;
+  }
+}

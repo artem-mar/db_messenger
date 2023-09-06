@@ -5,6 +5,7 @@
 
 .header {
   display: flex;
+  align-items: center;
   gap: 12px;
   color: $text5;
 }
@@ -17,6 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   svg {
     stroke: $primary1;
     @include icon_size_24;
@@ -42,5 +44,16 @@
     padding: 0;
     min-height: fit-content;
     height: fit-content;
+  }
+}
+
+@media (max-width: $small) {
+  h4.header {
+    @include t2;
+    line-height: 120%;
+  }
+
+  .body {
+    @include t4;
   }
 }
