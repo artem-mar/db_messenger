@@ -14,53 +14,33 @@
 
 .messages {
   width: 100%;
+  padding: $spcng24 0;
   position: relative;
   border-radius: 12px;
   flex-grow: 1;
-
   background-color: $bcgrnd1;
   box-shadow: 0px 1px 35px 0px #030f1a0d;
   overflow-y: hidden;
-}
-
-.dialogSidePanel {
-  position: relative;
-  width: 368px;
-  height: calc(100% - $topbar-height);
-  display: flex;
-  flex-direction: column;
-  .left {
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-  }
-
-  .textarea {
-    @include b1;
-    min-height: 160px;
-    max-height: 160px;
-    width: 100%;
-    resize: none;
-    outline: none;
-    border: none;
-    padding: 24px;
-    color: $text3;
-    &::-webkit-input-placeholder, /* Webkit based */
-    &::placeholder {
-      color: $text3;
-      opacity: 0.4;
-    }
-  }
 }
 
 .chat {
   width: 100%;
   height: 100%;
   display: flex;
-  padding: $spcng24 calc($spcng24 - $scrollbar-total-width) $spcng24 $spcng24;
+  padding: 0 $spcng24;
   flex-direction: column;
-  gap: 24px;
+  gap: $spcng16;
   overflow-y: scroll;
+
+  -webkit-padding-end: calc($spcng24 - 6px);
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
 }
 .userContainer {
   display: flex;
@@ -212,6 +192,12 @@
   .messages {
     border-radius: 0;
     box-shadow: none;
+    padding: 0;
+  }
+
+  .chat {
+    padding-top: $spcng24;
+    padding-bottom: $spcng24;
   }
 
   .form {

@@ -18,6 +18,7 @@ import { Button } from 'components/Buttons'
 import { Input } from 'components/Input/Input'
 import { Loader, TextLoader } from 'components/Loaders'
 import { StartDialogModal } from 'components/Modals'
+import { MultilineInput } from 'components/MultilineInput/MultilineInput'
 import SvgIcon from 'components/SvgIcon/SvgIcon'
 import s from './DialogModule.module.scss'
 
@@ -31,10 +32,10 @@ const DialogModule = ({ bot }: Props) => {
   const chatRef = useRef<HTMLDivElement>(null)
   const { UIOptions } = useUIOptions()
   const spIsActive = UIOptions[RIGHT_SP_IS_ACTIVE]
-  const { isScreenXs } = useResize()
+  const { isScreenXs, isScreenMd } = useResize()
 
   const [apiKey, setApiKey] = useState<string | null>(null)
-  const { handleSubmit, reset, control } = useForm<ChatForm>({
+  const { handleSubmit, reset, control, setFocus } = useForm<ChatForm>({
     mode: 'onSubmit',
   })
 
@@ -80,6 +81,7 @@ const DialogModule = ({ bot }: Props) => {
 
     const isChatSettings = checkIsChatSettings()
     if (!isChatSettings) return
+    if (send.isLoading) return
 
     const id = session?.id!
 
@@ -99,10 +101,11 @@ const DialogModule = ({ bot }: Props) => {
 
   const handleRenewClick = () => {
     renew.mutateAsync(bot?.name!)
+    setFocus('message')
   }
 
   return (
-    <section className={cx(s.container, spIsActive && s.withSP)}>
+    <section className={cx(s.container, spIsActive && !isScreenMd && s.withSP)}>
       <div className={s.messages}>
         <div className={s.chat} ref={chatRef}>
           {remoteHistory?.isLoading && !remoteHistory?.error ? (
@@ -153,15 +156,27 @@ const DialogModule = ({ bot }: Props) => {
         >
           <SvgIcon iconName='renew' />
         </Button>
-        <Input
-          big
-          name='message'
-          control={control}
-          props={{
-            placeholder: t('dialog_module.message_field.placeholder'),
-            disabled: formDisabled,
-          }}
-        />
+        {isScreenXs ? (
+          <MultilineInput
+            onSubmit={handleSubmit(handleSend)}
+            name='message'
+            control={control}
+            props={{
+              placeholder: t('dialog_module.message_field.placeholder'),
+              disabled: formDisabled,
+            }}
+          />
+        ) : (
+          <Input
+            big
+            name='message'
+            control={control}
+            props={{
+              placeholder: t('dialog_module.message_field.placeholder'),
+              disabled: formDisabled,
+            }}
+          />
+        )}
         <Button
           props={{
             type: 'submit',
