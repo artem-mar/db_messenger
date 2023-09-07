@@ -1,9 +1,6 @@
 .topbar {
-  position: sticky;
-  top: 0;
-  left: 0;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   width: 100vw;
   // @include min-w;
@@ -27,7 +24,7 @@
   .btns {
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-end;
     height: 64px;
     width: 100%;
     padding: 16px 24px;
@@ -45,7 +42,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     padding: 0px 14px;
     gap: 12px;
     color: #3300ff;

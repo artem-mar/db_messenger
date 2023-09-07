@@ -4,7 +4,7 @@
   position: absolute;
   background-color: $bcgrnd2;
   width: 100vw;
-  height: calc(100vh - $topbar-height);
+  height: calc(100% - $topbar-height);
   gap: 24px;
   padding: $spcng40;
   z-index: 0;
@@ -27,7 +27,7 @@
 
 @media (max-width: $small) {
   .main {
-    height: calc(100vh - $mobile-topbar-height);
+    height: calc(100% - $mobile-topbar-height);
     padding: 0;
     &.sidebar {
       left: 0;

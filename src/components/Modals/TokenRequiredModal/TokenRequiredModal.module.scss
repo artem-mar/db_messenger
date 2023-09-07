@@ -1,6 +1,6 @@
-.container {
+.modal {
   color: $text3;
-  margin: -8px 0;
+  max-width: 710px;
 }
 
 .header {
@@ -47,7 +47,17 @@
   }
 }
 
+@media (max-width: $medium) {
+  .modal {
+    max-width: 90%;
+  }
+}
+
 @media (max-width: $small) {
+  .modal {
+    max-width: 95%;
+  }
+
   h4.header {
     @include t2;
     line-height: 120%;

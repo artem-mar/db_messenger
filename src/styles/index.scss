@@ -41,8 +41,8 @@
 html,
 body {
   overflow: auto;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   overscroll-behavior-y: none;
 }
 a {
@@ -73,7 +73,7 @@ textarea {
 
 :global {
   .app {
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
   }
 }

@@ -42,25 +42,24 @@ const TokenRequiredModal = () => {
       closeOnBackdropClick={!UIOptions[KEYS_MISSING]}
       setIsOpen={setOpen}
       withoutCloseBtn
+      modalClassName={s.modal}
     >
-      <div className={s.container}>
-        <h4 className={s.header}>
-          <div className={s.attention}>
-            <SvgIcon iconName='attention' />
-          </div>
-          {t('modals.requiredKeys.header', { keys: keysString })}
-        </h4>
-        <div className={s.body}>
-          <Trans
-            i18nKey='modals.requiredKeys.annotation'
-            values={{ keys: keysString }}
-          />
+      <h4 className={s.header}>
+        <div className={s.attention}>
+          <SvgIcon iconName='attention' />
         </div>
-        <div className={s.link}>
-          <Button theme='ghost' props={{ onClick: handleEnterTokenClick }}>
-            {t('api_key.required.link')}
-          </Button>
-        </div>
+        {t('modals.requiredKeys.header', { keys: keysString })}
+      </h4>
+      <div className={s.body}>
+        <Trans
+          i18nKey='modals.requiredKeys.annotation'
+          values={{ keys: keysString }}
+        />
+      </div>
+      <div className={s.link}>
+        <Button theme='ghost' props={{ onClick: handleEnterTokenClick }}>
+          {t('api_key.required.link')}
+        </Button>
       </div>
     </BaseModal>
   )

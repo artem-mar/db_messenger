@@ -32,7 +32,6 @@
   gap: $spcng16;
   overflow-y: scroll;
 
-  -webkit-padding-end: calc($spcng24 - 6px);
   &::-webkit-scrollbar {
     width: 6px;
   }

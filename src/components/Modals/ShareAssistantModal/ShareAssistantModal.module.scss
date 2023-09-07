@@ -8,7 +8,6 @@
   overflow: hidden;
   .header {
     @include t1;
-    align-items: start;
     width: 100%;
     padding-right: 12px;
   }
