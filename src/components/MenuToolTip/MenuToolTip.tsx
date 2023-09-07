@@ -31,8 +31,8 @@ const MenuToolTip = ({ tooltipId }: Props) => {
     })
   }
 
-  const handleRestartDialog = async () => {
-    await renew.mutateAsync(vaName!)
+  const handleRestartDialog = () => {
+    renew.mutateAsync(vaName!)
   }
 
   const handleShareClick = () => {
