@@ -4,7 +4,13 @@
   background-color: $bcgrnd3 !important;
 }
 
-@media (max-width: $small) {
+@media (max-width: $x-large) {
+  .accessTokensModal {
+    max-width: 90% !important;
+  }
+}
+
+@media (max-width: $large) {
   .accessTokensModal {
     max-width: 95% !important;
   }

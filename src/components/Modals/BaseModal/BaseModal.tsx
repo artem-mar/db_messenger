@@ -44,7 +44,7 @@ const BaseModal = ({
           <SvgIcon iconName='close' svgProp={{ className: s.close }} />
         </button>
       )}
-      {children}
+      <div className={s.container}>{children}</div>
     </Modal>
   )
 }
