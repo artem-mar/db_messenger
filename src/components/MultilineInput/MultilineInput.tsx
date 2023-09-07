@@ -30,7 +30,7 @@ export const MultilineInput: FC<InputProps> = ({
     },
     defaultValue,
   })
-  const [isActive, setIsActive] = useState(false)
+  const [isActive, setIsActive] = useState(false) // for manage focus state (for styles)
   const [focus, setFocus] = useState(false)
   const inputId = props?.id ?? useId()
   const cx = classNames.bind(s)
@@ -50,8 +50,8 @@ export const MultilineInput: FC<InputProps> = ({
     const element = e.currentTarget
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault()
-      field.onChange()
       onSubmit()
+      field.onChange()
     }
 
     setTimeout(function () {
