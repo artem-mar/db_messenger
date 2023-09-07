@@ -70,7 +70,7 @@
     background-color: $bcgrnd2;
     padding: 0 20px;
     gap: 4px;
-    height: 56px;
+    height: $mobile-topbar-height;
     box-shadow: none;
 
     .assistantName {

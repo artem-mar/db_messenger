@@ -27,6 +27,7 @@
 
 @media (max-width: $small) {
   .main {
+    height: calc(100vh - $mobile-topbar-height);
     padding: 0;
     &.sidebar {
       left: 0;

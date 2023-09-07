@@ -1,5 +1,6 @@
 import React from 'react'
 import Modal from 'react-modal'
+import { useResize } from 'hooks/useResize'
 import s from './SidePanel.module.scss'
 
 export interface SidePanelProps {
@@ -25,9 +26,10 @@ const SidePanel = ({
   transition = 'right',
 }: SidePanelProps) => {
   const closeTimeoutMS = transition === 'none' ? 0 : 300
+  const { isScreenXs } = useResize()
   const customStyles = {
     overlay: {
-      top: 64,
+      top: isScreenXs ? 56 : 64,
       left: 'auto',
       right: transition === 'left' ? 'auto' : position?.right ?? 0,
       bottom: position?.bottom ?? 0,
@@ -63,6 +65,7 @@ const SidePanel = ({
       shouldCloseOnOverlayClick={false}
       preventScroll={true}
       shouldFocusAfterRender={false}
+      className={s.modal}
     >
       <div
         className={s.sidePanel}
