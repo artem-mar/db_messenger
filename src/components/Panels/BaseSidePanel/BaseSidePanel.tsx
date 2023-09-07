@@ -2,6 +2,7 @@ import { useUIOptions } from 'context'
 import React, { FC, useEffect, useState } from 'react'
 import { RIGHT_SP_IS_ACTIVE, TRIGGER_RIGHT_SP_EVENT } from 'constants/constants'
 import { useObserver } from 'hooks/useObserver'
+import { useResize } from 'hooks/useResize'
 import SidePanel from 'components/Panels/SidePanel/SidePanel'
 import SvgIcon from 'components/SvgIcon/SvgIcon'
 import s from './BaseSidePanel.module.scss'
@@ -37,6 +38,7 @@ export const BaseSidePanel: FC<BaseSidePanel> = ({
   const [isClosable, setIsClosable] = useState<boolean>(propsIsClosable)
   const [content, setContent] = useState<React.ReactNode>(children)
   const { setUIOption } = useUIOptions()
+  const { isScreenXs } = useResize()
 
   const handleClose = () => setIsOpen(false)
 
@@ -72,7 +74,7 @@ export const BaseSidePanel: FC<BaseSidePanel> = ({
       setIsOpen={setIsOpen}
       handleClose={handleClose}
       position={position}
-      transition={transition}
+      transition={isScreenXs ? 'none' : transition}
       key={transition}
     >
       <div className={s.baseSidePanel} id={`sp_${transition}`}>

@@ -28,3 +28,9 @@
     stroke: $text3;
   }
 }
+
+@media (max-width: $small) {
+  .baseSidePanel {
+    width: 100vw;
+  }
+}
