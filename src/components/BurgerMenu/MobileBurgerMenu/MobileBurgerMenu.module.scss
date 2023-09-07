@@ -31,8 +31,8 @@
   .backdrop {
     position: absolute;
     width: 100vw;
-    height: calc(100vh - 56px);
-    top: 56px;
+    height: calc(100vh - $mobile-topbar-height);
+    top: $mobile-topbar-height;
     left: -20px;
     background-color: #00000066;
     visibility: hidden;

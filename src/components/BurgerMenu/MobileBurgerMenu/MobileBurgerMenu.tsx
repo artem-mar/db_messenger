@@ -19,6 +19,14 @@ const MobileBurgerMenu = ({ bot }: { bot: BotInfoInterface }) => {
     keyPrefix: 'topbar.ctx_menus',
   })
 
+  const toggleBurgerMenu = () => {
+    setIsOpen(prev => !prev)
+    UIOptions[RIGHT_SP_IS_ACTIVE] &&
+      trigger(TRIGGER_RIGHT_SP_EVENT, {
+        isOpen: false,
+      })
+  }
+
   const handleEnterToken = () => {
     trigger('AccessTokensModal', {})
     setIsOpen(false)
@@ -39,7 +47,7 @@ const MobileBurgerMenu = ({ bot }: { bot: BotInfoInterface }) => {
 
   return (
     <div className={s.burger}>
-      <div className={s.button} onClick={() => setIsOpen(prev => !prev)}>
+      <div className={s.button} onClick={toggleBurgerMenu}>
         <img src={Logo} />
         <SvgIcon
           iconName='arrow_down'
