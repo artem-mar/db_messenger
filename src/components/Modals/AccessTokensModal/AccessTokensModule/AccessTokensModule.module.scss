@@ -5,9 +5,6 @@
   min-height: 100%;
   justify-content: space-between;
   background-color: $bcgrnd3;
-  padding-right: calc(64px - $scrollbar-total-width);
-  margin-right: calc(-64px);
-  overflow-y: scroll;
 
   .body {
     display: flex;
@@ -138,9 +135,6 @@
 
 @media (max-width: $small) {
   .module {
-    padding-right: calc(32px - $scrollbar-total-width);
-    margin-right: calc(-32px);
-
     .title {
       font-size: 20px;
     }

@@ -6,10 +6,17 @@
   height: fit-content;
   background-color: $bcgrnd1;
   border-radius: 24px;
-  padding: 48px 64px;
+  padding: 48px 0;
   position: relative;
   color: $text1;
   display: flex;
+
+  .container {
+    width: 100%;
+    padding: 0 64px;
+    -webkit-padding-end: calc(64px - $scrollbar-total-width);
+    overflow-y: scroll;
+  }
 
   h4 {
     @include t1;
@@ -48,7 +55,12 @@
     min-width: auto;
     max-width: 90%;
     max-height: 80%;
-    padding: 32px;
+    padding: 32px 0;
+
+    .container {
+      padding: 0 32px;
+      -webkit-padding-end: calc(32px - $scrollbar-total-width);
+    }
   }
   .close {
     top: 12px;
