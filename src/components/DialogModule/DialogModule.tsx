@@ -156,27 +156,15 @@ const DialogModule = ({ bot }: Props) => {
         >
           <SvgIcon iconName='renew' />
         </Button>
-        {isScreenXs ? (
-          <MultilineInput
-            onSubmit={handleSubmit(handleSend)}
-            name='message'
-            control={control}
-            props={{
-              placeholder: t('dialog_module.message_field.placeholder'),
-              disabled: formDisabled,
-            }}
-          />
-        ) : (
-          <Input
-            big
-            name='message'
-            control={control}
-            props={{
-              placeholder: t('dialog_module.message_field.placeholder'),
-              disabled: formDisabled,
-            }}
-          />
-        )}
+        <MultilineInput
+          onSubmit={handleSubmit(handleSend)}
+          name='message'
+          control={control}
+          props={{
+            placeholder: t('dialog_module.message_field.placeholder'),
+            disabled: formDisabled,
+          }}
+        />
         <Button
           props={{
             type: 'submit',
