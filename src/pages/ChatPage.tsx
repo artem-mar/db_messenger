@@ -28,19 +28,8 @@ const ChatPage = () => {
   return !error ? (
     <>
       <Topbar />
-      <Sidebar>
-        <div style={{ height: '100%' }}></div>
-        <div
-          style={{
-            width: '100%',
-            borderTop: '1px solid #F0F0F3',
-            paddingTop: '8px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '12px',
-          }}
-        ></div>
-      </Sidebar>
+      <Sidebar />
+
       <Main>
         <DialogModule bot={bot} />
       </Main>
