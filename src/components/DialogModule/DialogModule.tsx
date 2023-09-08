@@ -97,6 +97,8 @@ const DialogModule = ({ bot }: Props) => {
     )
 
     reset()
+    const el = document.getElementById('formInput')
+    if (el) el.style.cssText = 'height:auto'
   }
 
   const handleRenewClick = () => {
@@ -163,6 +165,7 @@ const DialogModule = ({ bot }: Props) => {
           props={{
             placeholder: t('dialog_module.message_field.placeholder'),
             disabled: formDisabled,
+            id: 'formInput',
           }}
         />
         <Button
