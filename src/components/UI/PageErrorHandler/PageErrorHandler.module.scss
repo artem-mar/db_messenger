@@ -1,6 +1,6 @@
 .pageErrorHandler {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -8,7 +8,7 @@
   justify-content: center;
 }
 
-.bg-info {
+.bgInfo {
   position: absolute;
   z-index: 3;
   left: 48%;
@@ -16,43 +16,43 @@
   background-color: $bcgrnd1;
   max-width: 705px;
   max-height: 705px;
-  width: 100%;
-  height: 100%;
+  width: 50vw;
+  height: 50vw;
   border-radius: 50%;
   transform: translate(-50%, -50%);
   overflow: hidden;
+
+  .semiCircle {
+    position: absolute;
+    top: -65%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(112, 0, 255, 0.15);
+    border-radius: 50% 50% 0 0;
+    transform: rotate(225deg);
+  }
 }
 
-.bg-info-semi-circle {
-  position: absolute;
-  top: -65%;
-  left: 50%;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(112, 0, 255, 0.15);
-  border-radius: 50% 50% 0 0;
-  transform: rotate(225deg);
-}
-
-.bg-front-circle {
+.frontCircle {
   left: 50%;
   top: 50%;
-  width: 60%;
-  height: 120%;
+  width: 60vw;
+  height: 60vw;
   transform: translate(-50%, -50%);
 }
 
-.bg-back-circle {
+.backCircle {
   left: 48%;
   top: 48%;
-  width: 72%;
-  height: 130%;
+  width: 72vw;
+  height: 72vw;
   transform: translate(-50%, -50%);
   opacity: 0.5;
 }
 
-.bg-front-circle,
-.bg-back-circle {
+.frontCircle,
+.backCircle {
   position: absolute;
   background: rgba(112, 0, 255, 0.1);
   border-radius: 50%;
@@ -100,8 +100,8 @@
 .status {
   position: absolute;
   z-index: 4;
-  top: 20%;
-  left: 55%;
+  top: calc(50% - 23vw);
+  left: 56%;
   color: $text6;
   transform: rotate(2.67deg);
   font-weight: 600;
@@ -112,4 +112,170 @@
 .background {
   width: 100%;
   height: 100%;
+}
+
+@media (max-width: $x-large) {
+  .status {
+    left: 57%;
+    top: calc(42% - 23vw);
+  }
+  .frontCircle {
+    width: 80vw;
+    height: 80vw;
+  }
+  .backCircle {
+    width: 92vw;
+    height: 92vw;
+  }
+  .bgInfo {
+    width: 60vw;
+    height: 60vw;
+  }
+}
+
+@media (max-width: $large) {
+  .status {
+    font-size: 80px;
+    top: calc(42% - 23vw);
+    left: 60%;
+    transform: rotate(4deg);
+  }
+  .icon {
+    position: absolute;
+    top: 17%;
+  }
+  .info {
+    top: 60%;
+    .message {
+      @include t4;
+      line-height: 150%;
+    }
+  }
+  .frontCircle {
+    width: 90vw;
+    height: 90vw;
+  }
+  .backCircle {
+    width: 102vw;
+    height: 102vw;
+  }
+  .bgInfo {
+    width: 70vw;
+    height: 70vw;
+  }
+}
+
+@media (max-width: $medium) {
+  .status {
+    font-size: 72px;
+    top: calc(40% - 23vw);
+    left: 62%;
+    transform: rotate(6deg);
+  }
+  .icon {
+    position: absolute;
+    top: 15%;
+  }
+  .info {
+    top: 60%;
+    .message {
+      @include t4;
+      line-height: 150%;
+    }
+  }
+  .frontCircle {
+    width: 100vw;
+    height: 100vw;
+  }
+  .backCircle {
+    width: 110vw;
+    height: 110vw;
+  }
+  .bgInfo {
+    width: 80vw;
+    height: 80vw;
+  }
+}
+
+@media (max-width: $small) {
+  .status {
+    font-size: 48px;
+    top: calc(40% - 23vw);
+    left: 65%;
+    transform: rotate(12deg);
+  }
+  .icon {
+    position: absolute;
+    top: 15%;
+    path {
+      transform: scale(0.6);
+    }
+  }
+  .info {
+    width: 60%;
+    top: 50%;
+    gap: 0;
+    .title {
+      @include t2;
+    }
+    .message {
+      @include b3;
+      line-height: 150%;
+    }
+  }
+  .frontCircle {
+    width: 115vw;
+    height: 115vw;
+  }
+  .backCircle {
+    width: 125vw;
+    height: 125vw;
+  }
+  .bgInfo {
+    width: 95vw;
+    height: 95vw;
+    left: 50%;
+  }
+}
+
+@media (max-width: 375px) {
+  .status {
+    font-size: 44px;
+    top: calc(41% - 23vw);
+    left: 63%;
+    transform: rotate(20deg);
+  }
+  .icon {
+    position: absolute;
+    top: 13%;
+    left: 25%;
+    path {
+      transform: scale(0.4);
+    }
+  }
+  .info {
+    top: 43%;
+    width: 100%;
+    .title {
+      @include t3;
+    }
+    .message {
+      width: 90%;
+      @include b4;
+      line-height: 150%;
+    }
+  }
+  .frontCircle {
+    width: 120vw;
+    height: 120vw;
+  }
+  .backCircle {
+    width: 130vw;
+    height: 130vw;
+  }
+  .bgInfo {
+    width: 100vw;
+    height: 100vw;
+    left: 50%;
+  }
 }

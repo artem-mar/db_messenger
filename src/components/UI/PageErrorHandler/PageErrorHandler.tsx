@@ -13,16 +13,16 @@ const PageErrorHandler = ({ status }: IProps) => {
     // Fix on SVG
     <div className={s.pageErrorHandler}>
       <div className={s.status}>{status}</div>
-      <div className={s['bg-info']}>
+      <div className={s.bgInfo}>
         <SvgIcon iconName={`error_${status}`} svgProp={{ className: s.icon }} />
-        <div className={s['bg-info-semi-circle']}></div>
+        <div className={s.semiCircle}></div>
         <div className={s.info}>
           <h1 className={s.title}>{title}</h1>
           <p className={s.message}>{message}</p>
         </div>
       </div>
-      <div className={s['bg-front-circle']}></div>
-      <div className={s['bg-back-circle']}></div>
+      <div className={s.frontCircle}></div>
+      <div className={s.backCircle}></div>
     </div>
   )
 }
