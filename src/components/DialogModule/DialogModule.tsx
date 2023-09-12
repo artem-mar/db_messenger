@@ -15,7 +15,6 @@ import { useResize } from 'hooks/useResize'
 import { getAvailableDialogSession } from 'utils/getAvailableDialogSession'
 import { getLSApiKeyByName } from 'utils/getLSApiKeys'
 import { Button } from 'components/Buttons'
-import { Input } from 'components/Input/Input'
 import { Loader, TextLoader } from 'components/Loaders'
 import { StartDialogModal } from 'components/Modals'
 import { MultilineInput } from 'components/MultilineInput/MultilineInput'
@@ -147,17 +146,19 @@ const DialogModule = ({ bot }: Props) => {
         <StartDialogModal />
       </div>
       <form className={s.form} onSubmit={handleSubmit(handleSend)}>
-        <Button
-          theme='secondary'
-          clone
-          props={{
-            disabled: formDisabled || renew.isLoading,
-            onClick: handleRenewClick,
-            'data-tooltip-id': 'renew',
-          }}
-        >
-          <SvgIcon iconName='renew' />
-        </Button>
+        {!isScreenXs && (
+          <Button
+            theme='secondary'
+            clone
+            props={{
+              disabled: formDisabled || renew.isLoading,
+              onClick: handleRenewClick,
+              'data-tooltip-id': 'renew',
+            }}
+          >
+            <SvgIcon iconName='renew' />
+          </Button>
+        )}
         <MultilineInput
           onSubmit={handleSubmit(handleSend)}
           name='message'
@@ -167,17 +168,20 @@ const DialogModule = ({ bot }: Props) => {
             disabled: formDisabled,
             id: 'formInput',
           }}
+          withEnterButton={isScreenXs}
         />
-        <Button
-          props={{
-            type: 'submit',
-            disabled: formDisabled || send.isLoading,
-          }}
-          clone
-          theme='primary'
-        >
-          <SvgIcon iconName='send' />
-        </Button>
+        {!isScreenXs && (
+          <Button
+            props={{
+              type: 'submit',
+              disabled: formDisabled,
+            }}
+            clone
+            theme='primary'
+          >
+            <SvgIcon iconName='send' />
+          </Button>
+        )}
       </form>
       {!isScreenXs && (
         <div className={s.prevention}>

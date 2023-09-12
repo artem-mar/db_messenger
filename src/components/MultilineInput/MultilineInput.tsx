@@ -2,6 +2,8 @@ import classNames from 'classnames/bind'
 import React, { FC, useId, useState } from 'react'
 import { Control, RegisterOptions, useController } from 'react-hook-form'
 import { checkIfEmptyString } from 'utils/formValidate'
+import { Button } from 'components/Buttons'
+import SvgIcon from 'components/SvgIcon/SvgIcon'
 import s from './MultilineInput.module.scss'
 
 interface InputProps {
@@ -11,6 +13,7 @@ interface InputProps {
   defaultValue?: string
   props?: React.InputHTMLAttributes<HTMLTextAreaElement>
   onSubmit: () => void
+  withEnterButton?: boolean
 }
 
 export const MultilineInput: FC<InputProps> = ({
@@ -20,6 +23,7 @@ export const MultilineInput: FC<InputProps> = ({
   defaultValue,
   props,
   onSubmit,
+  withEnterButton,
 }) => {
   const { field } = useController({
     name,
@@ -61,29 +65,38 @@ export const MultilineInput: FC<InputProps> = ({
   }
 
   return (
-    <div className={s.input}>
-      <div
-        className={cx(
-          'field',
-          focus && 'focus',
-          isActive && 'active',
-          props?.disabled && 'disabled'
-        )}
-      >
-        <textarea
-          {...props}
-          {...field}
-          id={inputId}
-          value={field.value || ''}
-          onBlur={handleBlur}
-          onChange={handleChange}
-          onKeyDown={textAreaKeyDown}
-          onFocus={() => setFocus(true)}
-          className={s.textArea}
-          spellCheck={false}
-          rows={1}
-        ></textarea>
-      </div>
+    <div
+      className={cx(
+        'field',
+        focus && 'focus',
+        isActive && 'active',
+        props?.disabled && 'disabled'
+      )}
+    >
+      <textarea
+        {...props}
+        {...field}
+        id={inputId}
+        value={field.value || ''}
+        onBlur={handleBlur}
+        onChange={handleChange}
+        onKeyDown={textAreaKeyDown}
+        onFocus={() => setFocus(true)}
+        className={cx(s.textArea, withEnterButton && 'withBtn')}
+        spellCheck={false}
+        rows={1}
+      ></textarea>
+      {withEnterButton && (
+        <Button
+          props={{
+            type: 'submit',
+            disabled: props?.disabled,
+            className: s.sendBtn,
+          }}
+        >
+          <SvgIcon iconName='send' />
+        </Button>
+      )}
     </div>
   )
 }

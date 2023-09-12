@@ -1,9 +1,5 @@
-.input {
-  display: flex;
-  width: 100%;
-}
-
 .field {
+  position: relative;
   display: flex;
   align-items: center;
   width: 100%;
@@ -37,6 +33,10 @@
   resize: none;
   padding-right: 24px;
 
+  &.withBtn {
+    padding-right: 60px;
+  }
+
   &::-webkit-scrollbar {
     width: 6px;
   }
@@ -53,5 +53,50 @@
   }
   &:disabled {
     background-color: $bcgrnd1;
+  }
+}
+
+.sendBtn {
+  position: absolute;
+  bottom: 0;
+  right: 12px;
+  height: 48px;
+  width: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include lnks_n_btns3;
+  svg {
+    @include icon_size_24;
+  }
+  &:disabled {
+    &:hover {
+      box-shadow: none;
+    }
+    cursor: default;
+    opacity: 0.3;
+  }
+  background-color: $primary1;
+  color: $text4;
+
+  &:active {
+    background-color: $primary4;
+  }
+}
+
+@media (max-width: $small) {
+  .field {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+
+    &.focus {
+      box-shadow: none;
+    }
+
+    &.withBtn {
+      padding-right: 48px;
+    }
   }
 }
