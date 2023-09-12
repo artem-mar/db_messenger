@@ -15,18 +15,20 @@
   }
 
   .assistantName {
+    width: 100%;
     white-space: nowrap;
     @include b3;
     padding: 0px 24px;
     @include accent_text;
+    @include text_ellipsis;
   }
 
   .btns {
+    width: fit-content;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     height: 64px;
-    width: 100%;
     padding: 16px 24px;
 
     .alertIcon {
@@ -75,6 +77,21 @@
       @include b3;
       padding: 0;
       color: #000000e6;
+    }
+
+    .btns {
+      padding: 0;
+
+      & button {
+        height: $mobile-topbar-height;
+
+        &:hover {
+          & path {
+            fill: none !important;
+            stroke: $primary_btn !important;
+          }
+        }
+      }
     }
   }
 }
