@@ -82,7 +82,7 @@
   "modals": {
     "requiredKeys": {
       "header": "Необходим {{keys}} токен",
-      "annotation": "This AI Assistant relies on <mark>{{keys}} models.</mark> Please note that it will not function properly until you provide the necessary <mark>{{keys}} key.</mark>"
+      "annotation": "Данный ИИ-помощник использует <mark>модели OpenAI.</mark> Обратите внимание, что он не будет работать должным образом, пока вы не предоставите необходимый <mark>OpenAI токен.</mark>"
     },
     "access_api_keys": {
       "header": "Личные токены доступа",
