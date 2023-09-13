@@ -84,7 +84,6 @@ export const Topbar = () => {
           </>
         ) : (
           <TopbarBtn
-            active={UIOptions[RIGHT_SP_IS_ACTIVE]}
             handleClick={handleRestartDialog}
             disabled={!bot || renew.isLoading}
           >

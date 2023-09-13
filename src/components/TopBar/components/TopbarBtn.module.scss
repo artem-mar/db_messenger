@@ -10,44 +10,24 @@
   }
 
   // styles only for the first button (key + notification)
-  &:first-of-type {
-    &.active {
-      background-color: $primary3;
-      & > :first-child path {
-        fill: $primary4;
-        stroke: none;
-      }
-    }
-    &:hover {
-      background-color: $primary3;
-      & > :first-child path {
-        fill: $primary_btn;
-        stroke: none;
-      }
-    }
-    &:active {
-      & > :first-child path {
-        fill: $primary4;
-        stroke: none;
-      }
-    }
-  }
-
   &.active {
     background-color: $primary3;
     & > :first-child path {
-      stroke: $primary4;
+      fill: $primary4;
+      stroke: none;
     }
   }
   &:hover {
     background-color: $primary3;
-    & > :first-child path {
-      stroke: $primary_btn;
+    & path {
+      fill: $primary_btn;
+      stroke: none;
     }
   }
   &:active {
-    & > :first-child path {
-      stroke: $primary4;
+    & path {
+      fill: $primary4;
+      stroke: none;
     }
   }
 }

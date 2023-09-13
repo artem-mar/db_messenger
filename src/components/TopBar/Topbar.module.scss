@@ -84,13 +84,6 @@
 
       & button {
         height: $mobile-topbar-height;
-
-        &:hover {
-          & path {
-            fill: none !important;
-            stroke: $primary_btn !important;
-          }
-        }
       }
     }
   }
