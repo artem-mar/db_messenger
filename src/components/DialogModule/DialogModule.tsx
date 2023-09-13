@@ -156,7 +156,7 @@ const DialogModule = ({ bot }: Props) => {
               'data-tooltip-id': 'renew',
             }}
           >
-            <SvgIcon iconName='renew' />
+            <SvgIcon svgProp={{ className: s.icon }} iconName='renew' />
           </Button>
         )}
         <MultilineInput
