@@ -27,7 +27,7 @@
   @include b2;
   width: 100%;
   max-height: 103px; // font-weight * line-height * row count
-  overflow-y: scroll;
+  overflow-y: auto;
   border: none;
   outline: none;
   resize: none;

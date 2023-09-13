@@ -30,7 +30,7 @@
   padding: 0 $spcng24;
   flex-direction: column;
   gap: $spcng16;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   &::-webkit-scrollbar {
     width: 6px;
@@ -160,18 +160,11 @@
   flex-direction: row;
   align-items: flex-end;
   gap: 14px;
+}
 
-  .btns {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-
-    & path {
-      stroke: blue;
-      fill: #fff;
-    }
-  }
+.icon path {
+  fill: $text2;
+  stroke: none !important;
 }
 
 .prevention {

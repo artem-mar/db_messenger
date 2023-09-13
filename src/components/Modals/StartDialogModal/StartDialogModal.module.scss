@@ -61,7 +61,7 @@
 }
 
 .body {
-  overflow-y: scroll;
+  overflow-y: auto;
   margin-right: -24px;
   padding-right: calc(24px - $scrollbar-total-width);
   margin-top: 8px;

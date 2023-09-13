@@ -14,7 +14,7 @@
   .container {
     width: 100%;
     padding: 18px 64px;
-    overflow-y: scroll;
+    overflow-y: auto;
 
     &::-webkit-scrollbar {
       width: 6px;
