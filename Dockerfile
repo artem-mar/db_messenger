@@ -8,5 +8,6 @@ WORKDIR /app
 COPY ./package.json .
 RUN npm install
 COPY . .
+RUN npm run build-$MODE
 
-CMD npm run $MODE
+CMD npx serve -s -l 5173 dist

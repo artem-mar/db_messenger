@@ -6,9 +6,11 @@
   "browserslist": "defaults",
   "scripts": {
     "dev": "vite --host --mode DEV",
-    "prod": "vite --host --mode PROD",
     "stage": "vite --host --mode STAGE",
-    "build": "vite build --mode PROD",
+    "prod": "vite --host --mode PROD",
+    "build-dev": "vite build --mode DEV",
+    "build-stage": "vite build --mode STAGE",
+    "build-prod": "vite build --mode PROD",
     "preview": "vite preview --port 5173",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
