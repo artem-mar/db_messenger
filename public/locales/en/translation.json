@@ -206,7 +206,7 @@
     },
     "share_assistant": {
       "header": "Share it with your community!",
-      "content_to_share": "Check out this Generative Assistant I made with https://deepdream.builders/ !",
+      "content_to_share": "Check out this AI Assistant I made with https://builder.deeppavlov.ai/ !",
       "separator_text": "or copy link",
       "btns": {
         "copy": "Copy",

@@ -206,7 +206,7 @@
     },
     "share_assistant": {
       "header": "Поделиться с друзьями",
-      "content_to_share": "Посмотрите на этого Генеративного Ассистента, который я сделал с помощью https://deepdream.builders/ !",
+      "content_to_share": "Посмотрите на этого ИИ-помощника, которого я сделал с помощью https://builder.deeppavlov.ai/ !",
       "separator_text": "или скопируйте ссылку",
       "btns": {
         "copy": "Скопировать",
