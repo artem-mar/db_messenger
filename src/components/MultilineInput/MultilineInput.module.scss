@@ -34,7 +34,7 @@
   padding-right: 24px;
 
   &.withBtn {
-    padding-right: 60px;
+    padding-right: 64px;
   }
 
   &::-webkit-scrollbar {
@@ -42,8 +42,6 @@
   }
   &::-webkit-scrollbar-thumb {
     height: 20px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
     border: 0;
   }
 
@@ -98,5 +96,10 @@
     &.withBtn {
       padding-right: 48px;
     }
+  }
+
+  .textArea::-webkit-scrollbar-thumb {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
   }
 }

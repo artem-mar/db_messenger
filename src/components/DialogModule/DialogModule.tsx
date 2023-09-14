@@ -87,7 +87,7 @@ const DialogModule = ({ bot }: Props) => {
     send.mutate(
       {
         dialog_session_id: id,
-        text: message,
+        text: message.trim(),
         openai_api_key: apiKey ?? undefined,
       },
       {

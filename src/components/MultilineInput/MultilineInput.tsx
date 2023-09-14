@@ -55,7 +55,6 @@ export const MultilineInput: FC<InputProps> = ({
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault()
       onSubmit()
-      field.onChange()
     }
 
     setTimeout(function () {
