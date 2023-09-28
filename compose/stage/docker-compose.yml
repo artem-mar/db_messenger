@@ -1,13 +1,14 @@
 services:
 
   messenger:
+    container_name: stage-messenger
     build:
-      context: ../.
+      context: ../../.
       dockerfile: ./Dockerfile
       args:
-        MODE: ${MODE}
+        MODE: stage
     ports:
-      - "6995:5173"
+      - "6996:5173"
     deploy:
       resources:
         limits:
