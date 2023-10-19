@@ -46,7 +46,7 @@ const DialogModule = ({ bot }: Props) => {
   const { send, renew, session, history, message, setSession, remoteHistory } =
     useChat()
 
-  const checkIsChatSettings = () => {
+  const updateApiKey = () => {
     const isOpenAIModelInside = () => {
       return bot?.required_api_keys?.some(key => key?.name === 'openai_api_key')
     }
@@ -55,8 +55,6 @@ const DialogModule = ({ bot }: Props) => {
       const openaiApiKey = getLSApiKeyByName(OPEN_AI_LM)
       setApiKey(openaiApiKey)
     }
-
-    return true
   }
 
   useEffect(() => {
@@ -67,6 +65,8 @@ const DialogModule = ({ bot }: Props) => {
           setSession(availableSession) //FIX
         })
       : bot && renew.mutateAsync(bot?.name!)
+
+    updateApiKey()
   }, [bot])
 
   useEffect(() => {
@@ -85,11 +85,7 @@ const DialogModule = ({ bot }: Props) => {
 
   const handleSend = ({ message }: ChatForm) => {
     const isMessage = message?.replace(/\s/g, '').length > 0
-    if (!isMessage) return
-
-    const isChatSettings = checkIsChatSettings()
-    if (!isChatSettings) return
-    if (send.isLoading) return
+    if (!isMessage || send.isLoading) return
 
     const id = session?.id!
 
